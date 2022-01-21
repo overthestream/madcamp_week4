@@ -15,7 +15,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={Talk} />
+        <Tab.Screen name="Home" component={GHT} />
       </Tab.Navigator>
     </NavigationContainer>
   );
