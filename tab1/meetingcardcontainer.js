@@ -1,9 +1,8 @@
 import React from "react";
-import { FlatList } from "react-native";
-import styled from "styled-components";
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';import styled from "styled-components";
 import MeetingCard from "./nowmeetingcard";
 
-const meetData = [
+const MeetData = [
   {
     'id': 1,
     'name' : '제호 생일 파티',
@@ -62,8 +61,26 @@ const meetData = [
   }
 ]
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    width: '100%',
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+});
+
 const MeetCard = (props) => {
-  <MeetingCard  props={props}></MeetingCard>
+  // console.log(props.props);
+  // <MeetingCard  props={props}/>
+  return(
+    <MeetingCard item={props.props}/>
+  );
 }
 
 const CardContainer = styled.View`
@@ -72,17 +89,19 @@ const CardContainer = styled.View`
 `
 
 const MeetingCardContainer = () => {
-  const renderItem = ({props}) => {
-    <MeetCard props={props}/>
-  }
+  const renderItem = (props) => {
+    // console.log(props.item);
+    return(<MeetCard props={props.item}/>);
+  };
+
   return(
-    <CardContainer>
+    <SafeAreaView style={styles.container}>
       <FlatList
-        data={meetData}
+        data={MeetData}
         renderItem={renderItem}
-        keyExtractor={meetData => meetData.id}
+        keyExtractor={item  => item.id}
       />
-    </CardContainer>
+    </SafeAreaView>
   );
 }
 

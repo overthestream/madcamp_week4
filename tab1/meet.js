@@ -54,6 +54,11 @@ const SecondText = styled.Text`
   color: #000;
 `;
 
+const MeetingWrapper = styled.View`
+  width: 100%;
+  backgroundColor: aqua;
+`;
+
 class App extends React.Component{
   render(){ 
     return(
@@ -67,9 +72,12 @@ class App extends React.Component{
         <SecondContainer>
           <SecondText>가고 싶은 약속들</SecondText>
         </SecondContainer>
-        <MeetCardWrapper>
+        {/* <MeetCardWrapper>
           <Meetingcardcontainer/>
-        </MeetCardWrapper>
+        </MeetCardWrapper> */}
+        <MeetingWrapper>
+          <Meetingcardcontainer/>
+        </MeetingWrapper>
       </Container>
     );
   }

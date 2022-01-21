@@ -1,15 +1,14 @@
 import styled from 'styled-components/native';
 import React, {Component} from 'react';
-
+import Text from 'react-native'
 
 const MeetingWrapper = styled.View`
   width: 90%;
   height: 100px;
   border-radius: 10px;
-  color: red;
+  color: #cecece;
   flex: 1;
 `;
-
 
 const MeetingInner = styled.View`
   width: 100%;
@@ -22,7 +21,7 @@ const MeetingInner = styled.View`
 const MeetingInfo = styled.View`
   flex: 8;
   height: 100%;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 `;
 
 const MeetingIcons = styled.View`
@@ -30,18 +29,20 @@ const MeetingIcons = styled.View`
   height: 100%;
   background-color: beige;
 `;
+const TitleText = styled.Text`
+  font-weight: 300; 
+  font-size: 20px;
+  line-height: 23px;
+`;
 
-const MeetingCard = (props) => {
+const MeetingCard = (item) => {
+  console.log(item.item.name)
+  const title = item.item.name
   return(
     <MeetingWrapper>
       <MeetingInner>
         <MeetingInfo>
-          <Text>
-            {props.name}
-          </Text>
-          <Text>
-            {props.year}
-          </Text>
+          <TitleText>{title}</TitleText>
         </MeetingInfo>
         <MeetingIcons/>
       </MeetingInner>
