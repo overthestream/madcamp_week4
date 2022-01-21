@@ -17,8 +17,6 @@ function GHT() {
         .fill('')
         .map(() => ({Talk}));
 
-    const [text, setText] = useState('Not Pressed');
-
     return (
         <SafeAreaView style={styles.container}>
             <SwipeListView
@@ -31,22 +29,23 @@ function GHT() {
                 renderHiddenItem={(data, rowMap) => (
                 <View style={styles.swipeHiddenItemContainer}>
                     <TouchableOpacity
-                    onPress={() => setText(`${data.item.text} left is pressed`)}>
-                    <View style={[styles.swipeHiddenItem, {backgroundColor: 'pink'}]}>
-                        <Text style={styles.swipeHiddenItemText}>left</Text>
-                    </View>
+                    onPress={() => {}}>
+                        <View 
+                            style={styles.swipeHiddenItem}>
+                            <Text style={styles.swipeHiddenItemText}>다같이 인생네컷 찍었다</Text>
+                        </View>
                     </TouchableOpacity>
                     <TouchableOpacity
-                    onPress={() => setText(`${data.item.text} right is pressed`)}>
-                    <View
-                        style={[styles.swipeHiddenItem, {backgroundColor: 'skyblue'}]}>
-                        <Text style={styles.swipeHiddenItemText}>right</Text>
-                    </View>
+                    onPress={() => {}}>
+                        <View
+                            style={styles.swipeHiddenItem}>
+                            <Text style={styles.swipeHiddenItemText}>right</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
                 )}
-                leftOpenValue={70}
-                rightOpenValue={-70}
+                leftOpenValue={120}
+                rightOpenValue={-120}
             />
         </SafeAreaView>
 
@@ -55,44 +54,43 @@ function GHT() {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    textContainer: {
-        width: '100%',
-        height: 100,
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    styledText: {
-        color: '#111',
-        fontWeight: 'bold',
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10,
+        marginBottom: 10,
     },
     swipeListItem: {
         alignItems: 'center',
         borderBottomColor: '#fff',
         borderBottomWidth: 1,
         justifyContent: 'center',
-        height: 50,
+        height: 250,
         backgroundColor: '#eee',
     },
     swipeHiddenItemContainer: {
-        flex: 1,
-        height: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: 'white',
         flexDirection: 'row',
+        borderRadius: 20,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10,
+        marginBottom: 10,
     },
     swipeHiddenItem: {
-        width: 70,
-        height: '100%',
+        width: 120,
+        height: 300,
         justifyContent: 'center',
         alignItems: 'center',
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10,
+        marginBottom: 10,
     },
     swipeHiddenItemText: {
-        color: 'white',
         fontSize: 14,
     },
 
