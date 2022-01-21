@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
     Platform, 
     StyleSheet, 
@@ -8,24 +8,29 @@ import {
 } from 'react-native';
 
 function Talk() {
+
+    const [ULImg, setULImg] = useState(0); // 나중에 수정
+    const [PFImg, setPFImg] = useState(0); // 나중에 수정
+    const [name, setName] = useState("이제호")
+    const [title, setTitle] = useState("\"기훈이 형은 인정이지\"");
+
     return (
         <View
             style={styles.container}>
             <Image
-                style={styles.uploadImg}
-                source = {require('./NMImg.jpeg')}>
+            style={styles.uploadImg}
+            source={require('./NMImg.jpeg')}>
             </Image>
-
             <View style={styles.Info}>
                 <Image
                     style={styles.profileImg}
-                    source = {require('./JHImg.jpeg')}>
+                    source={require('./JHImg.jpeg')}>
                 </Image>
                 <Text style={styles.Name}>
-                    이제호
+                    {name}
                 </Text>
                 <Text style={styles.Title}>
-                    "기훈이 형은 인정이지"
+                    {title}
                 </Text>
             </View>
         </View>
