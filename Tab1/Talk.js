@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        borderLeftColor: '#495464',
-        borderLeftWidth: 2,  
+        // borderLeftColor: '#495464',
+        // borderLeftWidth: 2,  
         marginLeft: 20,
         width: 120
     },
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius: 20,
         marginLeft: 6,
+        marginRight: 20,
         marginTop: 10,
         marginBottom: 10,
     },
@@ -82,14 +83,14 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         marginLeft: 5,
-        marginRight: 5,
+        marginRight: 20,
         textAlign: 'center'
     },
     Title: {
         fontSize: 15,
         marginTop: 10,
         marginLeft: 5,
-        marginRight: 5,
+        marginRight: 20,
         marginBottom: 10,
         textAlign: 'center'
     }

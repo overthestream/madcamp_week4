@@ -13,9 +13,11 @@ import { SwipeListView } from 'react-native-swipe-list-view'
 
 function GHT() {
 
-    const LIST_VIEW_DATA = Array(5)
+    const LIST_VIEW_DATA = Array(6)
         .fill('')
         .map(() => ({Talk}));
+
+    
 
     return (
         <SafeAreaView style={styles.container}>
@@ -31,21 +33,21 @@ function GHT() {
                     <TouchableOpacity
                     onPress={() => {}}>
                         <View 
-                            style={styles.swipeHiddenItem}>
-                            <Text style={styles.swipeHiddenItemText}>다같이 인생네컷 찍었다</Text>
+                            style={styles.swipeHiddenLeftItem}>
+                            <Text style={styles.swipeHiddenLeftItemText}>다같이 인생네컷 찍었다아아아아아아아아아아아아아</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity
                     onPress={() => {}}>
                         <View
-                            style={styles.swipeHiddenItem}>
-                            <Text style={styles.swipeHiddenItemText}>right</Text>
+                            style={styles.swipeHiddenRightItem}>
+                            <Text style={styles.swipeHiddenRightItemText}>right</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
                 )}
-                leftOpenValue={120}
-                rightOpenValue={-120}
+                leftOpenValue={140}
+                rightOpenValue={-230}
             />
         </SafeAreaView>
 
@@ -79,19 +81,33 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginTop: 10,
         marginBottom: 10,
+        elevation: 3
     },
-    swipeHiddenItem: {
-        width: 120,
-        height: 300,
+    swipeHiddenLeftItem: {
+        width: 110,
+        height: 200,
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 10,
         marginRight: 10,
-        marginTop: 10,
-        marginBottom: 10,
+        marginTop: 15,
+        marginBottom: 15,
     },
-    swipeHiddenItemText: {
+    swipeHiddenRightItem: {
+        width: 210,
+        height: 200,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 15,
+        marginBottom: 15,
+    },
+    swipeHiddenLeftItemText: {
         fontSize: 14,
+    },
+    swipeHiddenRightItemText: {
+        fontSize: 20,
     },
 
 });
