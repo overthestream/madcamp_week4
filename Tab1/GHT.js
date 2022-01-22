@@ -42,10 +42,12 @@ function GHT() {
                             <Text style={styles.swipeHiddenLeftItemText}>{memo}</Text>
                         </View>
                     </TouchableOpacity>
-                    {/* <TouchableOpacity
-                        onPress={() => {}}>  */}
                         <View
                             style={styles.swipeHiddenRightItem}>
+                            <Text
+                                style={styles.swipeHiddenTitleItemItem}>
+                                낭만 댓글을 써주세요
+                            </Text>
                             <View
                                 style={styles.swipeHiddenCommentItem}>
                                 <ScrollView>
@@ -72,7 +74,6 @@ function GHT() {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                    {/* </TouchableOpacity> */}
                 </View>
                 )}
                 leftOpenValue={140}
@@ -138,6 +139,16 @@ const styles = StyleSheet.create({
     },
     swipeHiddenRightItemText: {
         fontSize: 10,
+    },
+    swipeHiddenTitleItemItem: {
+        width: 200,
+        height: 25,
+        //padding: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        fontSize: 18,
+        marginBottom: 5
     },
     swipeHiddenCommentItem: {
         width: 200,
