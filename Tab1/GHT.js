@@ -22,7 +22,7 @@ function GHT() {
     const LIST_COMMENT = ["밤산은 인정이지", "낭만 미쳤다", "TPS 가야지", "아 진짜 너무 졸리다", "하나 둘 셋 화이팅~!"]
     
     const [memo, setMemo] = useState("다같이 인생네컷 찍었다아아아아아아아아아아아아아");
-    const [newComment, setNewComment] = useState('');
+    const [newComment, setNewComment] = useState("");
 
     return (
         <SafeAreaView style={styles.container}>
@@ -46,7 +46,7 @@ function GHT() {
                             style={styles.swipeHiddenRightItem}>
                             <Text
                                 style={styles.swipeHiddenTitleItemItem}>
-                                낭만 댓글을 써주세요
+                                낭만 댓글을 달아주세요
                             </Text>
                             <View
                                 style={styles.swipeHiddenCommentItem}>
@@ -65,6 +65,7 @@ function GHT() {
                                     value={newComment}
                                     onChangeText={setNewComment}
                                     placeholder='댓글 입력' />
+                                    {/*받은 newComment array 에 넣기*/}
                                 <TouchableOpacity
                                     activeOpacity={0.8}
                                     style={styles.swipeHiddenButtonItem}
