@@ -72,12 +72,7 @@ class App extends React.Component{
         <SecondContainer>
           <SecondText>가고 싶은 약속들</SecondText>
         </SecondContainer>
-        {/* <MeetCardWrapper>
           <Meetingcardcontainer/>
-        </MeetCardWrapper> */}
-        <MeetingWrapper>
-          <Meetingcardcontainer/>
-        </MeetingWrapper>
       </Container>
     );
   }
