@@ -19,10 +19,29 @@ function GHT() {
         .fill('')
         .map(() => ({Talk}));
 
-    const LIST_COMMENT = ["밤산은 인정이지", "낭만 미쳤다", "TPS 가야지", "아 진짜 너무 졸리다", "하나 둘 셋 화이팅~!"]
+    const LIST_COMMENT = [
+        {
+            id: 1,
+            comment: "밤산은 인정이지"
+        }, 
+        {
+            id: 2,
+            comment: "TPS 가야지"
+        }, 
+        {
+            id: 3,
+            comment: "아 진짜 너무 졸리다"
+        },
+        {
+            id: 4,
+            comment: "하나 둘 셋 화이팅~!"
+        },
+    ];
     
     const [memo, setMemo] = useState("다같이 인생네컷 찍었다아아아아아아아아아아아아아");
-    const [newComment, setNewComment] = useState("");
+    const [newComment, setNewComment] = useState('');
+    
+    // 댓글 관리: 새로운 댓글 -> 서버/db -> 다시 받아서 랜더링
 
     return (
         <SafeAreaView style={styles.container}>
@@ -51,9 +70,10 @@ function GHT() {
                             <View
                                 style={styles.swipeHiddenCommentItem}>
                                 <ScrollView>
-                                    {LIST_COMMENT.map(comment => {
+                                    {LIST_COMMENT.map(e => {
                                         var a = <Text
-                                            style={styles.swipeHiddenCommentItemText}>{comment}</Text>
+                                            key = {e.id}
+                                            style={styles.swipeHiddenCommentItemText}>{e.comment}</Text>
                                         return a
                                     })}
                                 </ScrollView>
@@ -63,12 +83,16 @@ function GHT() {
                                 <TextInput
                                     style={styles.swipeHiddenInputTextItem}
                                     value={newComment}
-                                    onChangeText={setNewComment}
+                                    scrollEnabled={true}
+                                    blurOnSubmit={true}
+                                    onKeyPress={(e) => e.key === 'Enter'}
+                                    onChangeText={(text) => {
+                                        setNewComment(text)
+                                    }}
                                     placeholder='댓글 입력' />
-                                    {/*받은 newComment array 에 넣기*/}
                                 <TouchableOpacity
-                                    activeOpacity={0.8}
                                     style={styles.swipeHiddenButtonItem}
+                                    activeOpacity={0.6}
                                     onPress={() => {Keyboard.dismiss()}}>
                                     <Text
                                         style={{color: '#3D56B2'}}>게시</Text>
