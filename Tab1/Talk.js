@@ -1,6 +1,5 @@
-import React, {Component, useState} from 'react';
-import {
-    Platform, 
+import React, {useState} from 'react';
+import { 
     StyleSheet, 
     Text, 
     View,
@@ -11,10 +10,12 @@ import {
 
 function Talk() {
 
+    const initname = "이제호";
+    const initTitle = "\"기훈이 형은 인정이지\""
     const [ULImg, setULImg] = useState(0); // 나중에 수정
     const [PFImg, setPFImg] = useState(0); // 나중에 수정
-    const [name, setName] = useState("이제호")
-    const [title, setTitle] = useState("\"기훈이 형은 인정이지\"");
+    const [name, setName] = useState(initname);
+    const [title, setTitle] = useState(initTitle);
 
     return (
         <View

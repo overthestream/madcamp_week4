@@ -1,5 +1,6 @@
 import GHT from './Tab1/GHT';
 import Talk from './Tab1/Talk';
+import EventDay from './Tab1/EventDay';
 //import 방명록
 // import 약속
 import React from 'react';

@@ -11,6 +11,7 @@ import {
     Keyboard
 } from 'react-native';
 import Talk from './Talk';
+import EventDay from './EventDay';
 import { SwipeListView } from 'react-native-swipe-list-view'
 
 function GHT() {
@@ -45,6 +46,7 @@ function GHT() {
 
     return (
         <SafeAreaView style={styles.container}>
+            <EventDay />
             <SwipeListView
                 data={LIST_VIEW_DATA}
                 renderItem={() => (
