@@ -56,13 +56,13 @@ function GHT() {
                 )}
                 renderHiddenItem={(data, rowMap) => (
                 <View style={styles.swipeHiddenItemContainer}>
-                    <TouchableOpacity
-                        onPress={() => {}}>
+                    {/* <TouchableOpacity
+                        onPress={() => {}}> */}
                         <View 
                             style={styles.swipeHiddenLeftItem}>
                             <Text style={styles.swipeHiddenLeftItemText}>{memo}</Text>
                         </View>
-                    </TouchableOpacity>
+                    {/* </TouchableOpacity> */}
                         <View
                             style={styles.swipeHiddenRightItem}>
                             <Text
