@@ -15,7 +15,7 @@ function EventDay() {
     const initTDname = "이제호";
     const initNewVisit = "행복하자~";
     const [TDname, setTDName] = useState(initTDname);
-    const [modalVisible, setModalVisible] = useState(true);
+    const [modalVisible, setModalVisible] = useState(false);
     const [newVisit, setNewVisit] = useState(initNewVisit);
 
     return (
