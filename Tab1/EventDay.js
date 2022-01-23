@@ -3,14 +3,19 @@ import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    TextInput,
+    Modal
 } from 'react-native';
 
 function EventDay() {
 
     const initTDname = "이제호";
     const [TDname, setTDName] = useState(initTDname);
-    
+
+    // 놀다와서 모달하기......
+
+    console.log("testestestest")
     return (
         <View
             style={styles.container}>
@@ -39,6 +44,13 @@ const styles = StyleSheet.create({
     TDnameText: {
         fontSize: 25,
         fontWeight: 'bold'
+    },
+    modal: {
+        justifyContent: 'center',
+    },
+    modalContainer: {
+        weight: 200,
+        height: 200
     }
 });
 export default EventDay;
