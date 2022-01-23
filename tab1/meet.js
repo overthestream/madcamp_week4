@@ -2,8 +2,11 @@ import styled from 'styled-components/native';
 import React, {Component} from 'react';
 import SwiperComponent from './swipermeet';
 // import MeetingCard from './nowmeetingcard';
+import {StyleSheet,Text,Alert, Modal, Pressable, View} from 'react-native';
 import Meetingcardcontainer from './meetingcardcontainer';
-// import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SearchLocation from './make/setlocation';
 
 const MainText = styled.Text`
   font-size: 20px;
@@ -30,14 +33,16 @@ const MainContainer = styled.View`
 const SecondContainer = styled.View`
   width: 100%;
   height: 50px;
-  align-items: flex-start;
-  background-color: aqua;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  /* background-color: aqua; */
 `;
 
 const SwiperContainer = styled.View`
-  height: 200px;
+  height: 170px;
   width: 100%;
-  background-color: greenyellow;
+  /* background-color: greenyellow; */
 `;
 
 const MeetCardWrapper = styled.View`
@@ -50,17 +55,85 @@ const SecondText = styled.Text`
   font-size: 20px;
   text-align: center;
   margin-left: 10px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   color: #000;
 `;
 
 const MeetingWrapper = styled.View`
   width: 100%;
-  backgroundColor: aqua;
+  /* backgroundColor: aqua; */
 `;
 
-class App extends React.Component{
-  render(){ 
+const BtnWrapper = styled.View`
+  align-items:flex-end;
+  justify-content:center;
+`;
+
+const MakeBtn = styled.Pressable`
+  width: 100px;
+  border-radius: 15px;
+  background-color: #FE2B54;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  
+` 
+const BtnText = styled.Text`
+  color: #fff;
+  font-size: 15px;
+`;
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  }
+});
+
+
+
+const Default = ({navigation}) => {
+
+  // render(){
+    // const { modalVisible } = this.state; 
     return(
       <Container>
         <MainContainer>
@@ -71,11 +144,40 @@ class App extends React.Component{
         </SwiperContainer>
         <SecondContainer>
           <SecondText>가고 싶은 약속들</SecondText>
+          <BtnWrapper>
+            <MakeBtn
+              title="약속 만들기"
+              onPress={()=>navigation.navigate('Make')}>
+              <BtnText>
+              약속 만들기
+              </BtnText>
+            </MakeBtn>
+          </BtnWrapper>
         </SecondContainer>
-          <Meetingcardcontainer/>
+        <Meetingcardcontainer/>
       </Container>
     );
-  }
+  // }
 }
+
+const Make = ({navigation}) => {
+  return(
+    <SearchLocation/>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  return(
+    <NavigationContainer>
+      <Stack.Navigator screenOptions = {{ headerShown: false }}>
+        <Stack.Screen name="Default" component={Default}/>
+        <Stack.Screen name="Make" component={Make}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
 
 export default App; 

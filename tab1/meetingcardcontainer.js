@@ -1,5 +1,6 @@
 import React from "react";
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';import styled from "styled-components";
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import styled from "styled-components";
 import MeetingCard from "./nowmeetingcard";
 
 const MeetData = [
@@ -74,6 +75,16 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
   },
+  shadow:{
+    shadowColor: "#000",
+    shadowOffset: {
+	    width: 0,
+	    height: 7,
+    },
+    shadowOpacity: 0.43,
+    shadowRadius: 9.51,
+    elevation: 15,
+  }
 });
 
 const MeetCard = (props) => {
@@ -98,6 +109,7 @@ const MeetingCardContainer = () => {
   return(
     <SafeAreaView style={styles.container}>
       <FlatList
+        style={styles.shadow}
         data={MeetData}
         renderItem={renderItem}
         keyExtractor={item  => item.id}
