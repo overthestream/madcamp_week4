@@ -4,7 +4,9 @@ import {
     StyleSheet, 
     Text, 
     View,
-    Image
+    Image,
+    TouchableOpacity,
+    Alert
 } from 'react-native';
 
 function Talk() {
@@ -18,14 +20,19 @@ function Talk() {
         <View
             style={styles.container}>
             <Image
-            style={styles.uploadImg}
-            source={require('./NMImg.jpeg')}>
+                style={styles.uploadImg}
+                source={require('./NMImg.jpeg')}>
             </Image>
             <View style={styles.Info}>
-                <Image
-                    style={styles.profileImg}
-                    source={require('./JHImg.jpeg')}>
-                </Image>
+                <TouchableOpacity 
+                    style={styles.profileImgTouch}
+                    onPress={() => Alert.alert('click...')} // click event 로 프로필창? 보이게 
+                    activeOpacity={0.6}>
+                    <Image
+                        style={styles.profileImg}
+                        source={require('./JHImg.jpeg')}>
+                    </Image>
+                </TouchableOpacity>
                 <Text style={styles.Name}>
                     {name}
                 </Text>
@@ -66,10 +73,21 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 20,
+        // marginLeft: 6,
+        // marginRight: 20,
+        // marginTop: 10,
+        // marginBottom: 10,
+    },
+    profileImgTouch: {
+        width: 100,
+        height: 100,
+        borderRadius: 20,
         marginLeft: 6,
         marginRight: 20,
         marginTop: 10,
         marginBottom: 10,
+        // borderColor: 'black',
+        // borderWidth: 2
     },
     uploadImg: {
         width: 200,
@@ -93,7 +111,8 @@ const styles = StyleSheet.create({
         marginRight: 20,
         marginBottom: 10,
         textAlign: 'center'
-    }
+    },
+
 });
 
 export default Talk;
