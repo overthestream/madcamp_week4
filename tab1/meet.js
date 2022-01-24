@@ -7,6 +7,7 @@ import Meetingcardcontainer from './meetingcardcontainer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchLocation from './make/setlocation';
+import WhenToMeet from "./make/makemeet"
 
 const MainText = styled.Text`
   font-size: 20px;
@@ -174,6 +175,7 @@ const App = () => {
       <Stack.Navigator screenOptions = {{ headerShown: false }}>
         <Stack.Screen name="Default" component={Default}/>
         <Stack.Screen name="Make" component={Make}/>
+        <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

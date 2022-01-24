@@ -6,9 +6,11 @@ import Location from './location';
 
 const styles = StyleSheet.create({
   input: {
-    width: '95%',
+    width: '90%',
     backgroundColor: '#cecece',
-    // marginTop: 20,
+    borderRadius: 10,
+    marginLeft: 10,
+    marginRight: 5,
     fontSize: 20,
     // padding: 10,
   },
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
   mainView: {
     flexDirection: 'column',
     alignContent: 'center',
-    justifyContent: "center",
+    // justifyContent: "center"
     width: '100%',
   },
   button: {
@@ -34,6 +36,8 @@ const styles = StyleSheet.create({
 
 const MainText = styled.Text`
   font-size: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
   /* margin-left: 30px; */
 `;
 
@@ -44,9 +48,10 @@ const InputContainer = styled.View`
   /* padding: 5px; */
   margin-left: 10px;
   height: 40px;
+  margin-top: 20px;
   margin-right: 10px;
   border-radius: 10px;
-  background-color: #cecece;
+  /* background-color: #cecece; */
 `;
 
 const TextContainer = styled.View`
@@ -56,7 +61,9 @@ const TextContainer = styled.View`
   height: 100%;
 `;
 
-
+const SearchText = styled.Text`
+  padding-right: 20px;
+`;
 
 const SearchLocation = () => {
 
@@ -85,10 +92,6 @@ const SearchLocation = () => {
       console.log(error);
     })
   }
-  
-  const press = () => {
-    search()
-  }
 
   return(
     <View style={styles.mainView}>
@@ -96,12 +99,11 @@ const SearchLocation = () => {
       <InputContainer>
         <TextContainer>
           <TextInput
-          // value={this.state.textInput}
           onChangeText={setTextInput}
             style={styles.input}
           />
           <TouchableOpacity onPress={search}>
-            <Text>검색</Text>
+            <SearchText>검색</SearchText>
           </TouchableOpacity>
         </TextContainer>
       </InputContainer>
