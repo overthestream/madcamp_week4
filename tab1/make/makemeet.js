@@ -1,6 +1,27 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
-import {View,Text} from 'react-native';
+import { Touchable,Platform ,Button,View, Text} from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import StyleSheet from 'react-native';
+
+// const styles = StyleSheet.create({ 
+//   container: {
+//       flex: 1,
+//       justifyContent: 'center',
+//       alignItems: 'center',
+//       backgroundColor: 'white',
+//   },
+//   textInput: {
+//       fontSize: 16,
+//       color: '#000000',
+//       height: 50, 
+//       width: 300, 
+//       borderColor: '#000000', 
+//       borderWidth: 1, 
+//       borderRadius: 12,
+//       padding: 10
+//   }
+// })
 
 
 //상단 정보 표기란
@@ -39,9 +60,7 @@ const UpperContentWrapper = styled.View`
   border-radius: 10px;
 `;
 
-//날짜 선택란
-
-export default function WhernToMeet({route}){
+export default function WhenToMeet({route}){
   
   const data = route.params.props.item;
   
@@ -50,6 +69,29 @@ export default function WhernToMeet({route}){
   const y = data.y;
   const placeName = data.place_name;
   const address = data.road_address_name;
+
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
 
   return(
     <MainView>
@@ -60,7 +102,27 @@ export default function WhernToMeet({route}){
       </UpperContentWrapper>
       <UpperContentWrapper>
         <SecondMainText>근데 언제 만나?</SecondMainText>
-        <WhereToMeet>{placeName}</WhereToMeet>
+        <View>
+      <View>
+        <Button onPress={showDatepicker} title="Show date picker!" />
+      </View>
+      <View>
+        <Button onPress={showTimepicker} title="Show time picker!" />
+      </View>
+      {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />
+      )}
+    </View>
+        <WhereToMeet>{date.getFullYear()}</WhereToMeet>
+        <WhereToMeet>{date.getMonth()}</WhereToMeet>
+        <WhereToMeet>{date.getDate()}</WhereToMeet>
       </UpperContentWrapper>
     </MainView>
   )
