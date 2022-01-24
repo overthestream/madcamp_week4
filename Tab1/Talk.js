@@ -22,7 +22,7 @@ function Talk() {
             style={styles.container}>
             <Image
                 style={styles.uploadImg}
-                source={require('./NMImg.jpeg')}>
+                source={require('./image/NMImg.jpeg')}>
             </Image>
             <View style={styles.Info}>
                 <TouchableOpacity 
@@ -31,7 +31,7 @@ function Talk() {
                     activeOpacity={0.6}>
                     <Image
                         style={styles.profileImg}
-                        source={require('./JHImg.jpeg')}>
+                        source={require('./image/JHImg.jpeg')}>
                     </Image>
                 </TouchableOpacity>
                 <Text style={styles.Name}>

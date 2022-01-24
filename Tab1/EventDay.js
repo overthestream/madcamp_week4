@@ -9,71 +9,27 @@ import {
     Keyboard,
     Image
 } from 'react-native';
-
-const VisitModal = (props) => {
-
-    const {setVisitModalVisible, setNewVisit} = props;
-    
-    console.log(props.isVisible)
-
-    return (
-        <Modal
-            animationType='slide'
-            transparent={true}
-            visible={props.isVisible}>
-            <View
-                style={styles.container}>
-                <View
-                    style={styles.modalContainer}>
-                    <View
-                        style={{flexDirection: 'row', width: 220,}}>
-                        <Text style={styles.ToText}>To. 제호씨</Text>
-                        <TouchableOpacity
-                            style={styles.iconSend}
-                            activeOpacity={0.6}
-                            onPress={() => {
-                                Keyboard.dismiss()
-                                setVisitModalVisible(false)
-                            }}>
-                            <Image
-                                style={{width: 20, height: 20,}}
-                                source={require('./send.png')}>
-                            </Image>
-                        </TouchableOpacity>      
-                    </View>
-                    <TextInput
-                        style={styles.modalInputText}
-                        scrollEnabled={true}
-                        multiline={true}
-                        blurOnSubmit={true}
-                        onKeyPress={(e) => e.key === 'Enter'}
-                        onChangeText={(text) => {
-                            setNewVisit(text)
-                        }}
-                        placeholder='방명록을 남겨주세요'/>
-                    <Text style={styles.FromText}>From. 선우</Text>
-                </View>
-            </View>
-        </Modal>
-    )
-}
+import VisitModal from './VisitModal';
+import GHTModal from './GHTModal';
 
 function EventDay(props) {
 
     const initTDname = "이제호";
-    const [TDname, setTDName] = useState(initTDname);
     const initNewVisit = "행복하자~";
+    const initNewGht = "나디나니다니다니다니다닏나ㅣㄷ";
+    const [TDname, setTDName] = useState(initTDname);
     const [visitModalVisible, setVisitModalVisible] = useState(false);
     const [newVisit, setNewVisit] = useState(initNewVisit);
+    const [ghtModalVisible, setGhtModalVisible] = useState(false);
+    const [newGht, setNewGht] = useState(initNewGht);
 
     return (
         <View
             style={styles.container}>
-
             <View
                 style={{flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
                 <View
-                    style={{flexDirection: 'row', width: '90%',}}>
+                    style={{flexDirection: 'row', width: '95%',}}>
                     <Text style={styles.TDText}>금주의 PICK </Text>
                     <TouchableOpacity 
                         onPress={() => {setVisitModalVisible(true)}}>
@@ -81,14 +37,15 @@ function EventDay(props) {
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity
-                    onPress={() => {}}>
+                    onPress={() => {setGhtModalVisible(true)}}>
                     <Image
                         style={styles.uploadIcon}
-                        source={require('./upload.png')}>
+                        source={require('./image/upload.png')}>
                     </Image>
                 </TouchableOpacity> 
             </View>
             <VisitModal isVisible = {visitModalVisible} setVisitModalVisible = {setVisitModalVisible} setNewVisit = {setNewVisit}/>
+            <GHTModal isVisible={ghtModalVisible} setGhtModalVisible = {setGhtModalVisible} setNewGht = {setNewGht}/>
         </View>
     )
 }
@@ -107,50 +64,11 @@ const styles = StyleSheet.create({
     TDText: {
         fontSize: 20,
         marginTop: 3,
-        marginLeft: 10
+        marginLeft: 20
     },
     TDnameText: {
         fontSize: 25,
         fontWeight: 'bold'
-    },
-    modalContainer: {
-        //flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        width: 250,
-        height: 250,
-        borderRadius: 20,
-        elevation: 3,
-    },
-    modalInputText: {
-        width: 220,
-        height: 180,
-        borderRadius: 20,
-        borderColor: 'black',
-        borderWidth: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    ToText: {
-        fontSize: 16,
-        marginTop: 5,
-        marginLeft: 10,
-        marginBottom: 5,
-        textAlign: 'left',
-        width: 190,
-    },
-    FromText: {
-        fontSize: 16,
-        margin: 5,
-        textAlign: 'right',
-        width: 220,
-    },
-    iconSend: {
-        width: 20,
-        height: 20, 
-        marginTop: 8
     },
     uploadIcon: {
         width: 30,
