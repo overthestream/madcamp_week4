@@ -8,7 +8,8 @@ import {
     SafeAreaView,
     TouchableOpacity,
     TextInput,
-    Keyboard
+    Keyboard,
+    Image
 } from 'react-native';
 import Talk from './Talk';
 import EventDay from './EventDay';
@@ -19,7 +20,7 @@ function GHT() {
     const LIST_VIEW_DATA = Array(6)
         .fill('')
         .map(() => ({Talk}));
-
+    // for test
     const LIST_COMMENT = [
         {
             id: 1,
@@ -42,11 +43,17 @@ function GHT() {
     const [memo, setMemo] = useState("다같이 인생네컷 찍었다아아아아아아아아아아아아아");
     const [newComment, setNewComment] = useState('');
     
-    // 댓글 관리: 새로운 댓글 -> 서버/db -> 다시 받아서 랜더링
+    // 댓글 관리: 새로운 댓글 -> 서버/db -> 다시 받아서 랜더링,,?
 
     return (
         <SafeAreaView style={styles.container}>
-            <EventDay />
+           
+            {/* <View> */}
+                {/* style={{flexDirection: 'row', width: '100%', 
+                borderColor: 'black', borderWidth: 1}}> */}
+                <EventDay />        
+            {/* </View> */}
+            
             <SwipeListView
                 data={LIST_VIEW_DATA}
                 renderItem={() => (
@@ -56,51 +63,48 @@ function GHT() {
                 )}
                 renderHiddenItem={(data, rowMap) => (
                 <View style={styles.swipeHiddenItemContainer}>
-                    {/* <TouchableOpacity
-                        onPress={() => {}}> */}
-                        <View 
-                            style={styles.swipeHiddenLeftItem}>
-                            <Text style={styles.swipeHiddenLeftItemText}>{memo}</Text>
-                        </View>
-                    {/* </TouchableOpacity> */}
+                    <View 
+                        style={styles.swipeHiddenLeftItem}>
+                        <Text style={styles.swipeHiddenLeftItemText}>{memo}</Text>
+                    </View>
+                    <View
+                        style={styles.swipeHiddenRightItem}>
+                        <Text
+                            style={styles.swipeHiddenTitleItemItem}>
+                            낭만 댓글을 달아주세요
+                        </Text>
                         <View
-                            style={styles.swipeHiddenRightItem}>
-                            <Text
-                                style={styles.swipeHiddenTitleItemItem}>
-                                낭만 댓글을 달아주세요
-                            </Text>
-                            <View
-                                style={styles.swipeHiddenCommentItem}>
-                                <ScrollView>
-                                    {LIST_COMMENT.map(e => {
-                                        var a = <Text
-                                            key = {e.id}
-                                            style={styles.swipeHiddenCommentItemText}>{e.comment}</Text>
-                                        return a
-                                    })}
-                                </ScrollView>
-                            </View>
-                            <View
-                                style={styles.swipeHiddenInputItem}>
-                                <TextInput
-                                    style={styles.swipeHiddenInputTextItem}
-                                    value={newComment}
-                                    scrollEnabled={true}
-                                    blurOnSubmit={true}
-                                    onKeyPress={(e) => e.key === 'Enter'}
-                                    onChangeText={(text) => {
-                                        setNewComment(text)
-                                    }}
-                                    placeholder='댓글 입력' />
-                                <TouchableOpacity
-                                    style={styles.swipeHiddenButtonItem}
-                                    activeOpacity={0.6}
-                                    onPress={() => {Keyboard.dismiss()}}>
-                                    <Text
-                                        style={{color: '#3D56B2'}}>게시</Text>
-                                </TouchableOpacity>
-                            </View>
+                            style={styles.swipeHiddenCommentItem}>
+                            <ScrollView>
+                                {LIST_COMMENT.map(e => {
+                                    var a = <Text
+                                        key = {e.id}
+                                        style={styles.swipeHiddenCommentItemText}>{e.comment}</Text>
+                                    return a
+                                })}
+                            </ScrollView>
                         </View>
+                        <View
+                            style={styles.swipeHiddenInputItem}>
+                            <TextInput
+                                style={styles.swipeHiddenInputTextItem}
+                                value={newComment}
+                                scrollEnabled={true}
+                                blurOnSubmit={true}
+                                onKeyPress={(e) => e.key === 'Enter'}
+                                onChangeText={(text) => {
+                                    setNewComment(text)
+                                }}
+                                placeholder='댓글 입력' />
+                            <TouchableOpacity
+                                style={styles.swipeHiddenButtonItem}
+                                activeOpacity={0.6}
+                                onPress={() => {Keyboard.dismiss()}}>
+                                <Text
+                                    style={{color: '#3D56B2'}}>게시</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </View>
                 )}
                 leftOpenValue={140}
@@ -219,7 +223,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 60,
         padding: 10,
-    }
+    },
 });
 
 export default GHT;

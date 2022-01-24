@@ -10,60 +10,85 @@ import {
     Image
 } from 'react-native';
 
-function EventDay() {
+const VisitModal = (props) => {
+
+    const {setVisitModalVisible, setNewVisit} = props;
+    
+    console.log(props.isVisible)
+
+    return (
+        <Modal
+            animationType='slide'
+            transparent={true}
+            visible={props.isVisible}>
+            <View
+                style={styles.container}>
+                <View
+                    style={styles.modalContainer}>
+                    <View
+                        style={{flexDirection: 'row', width: 220,}}>
+                        <Text style={styles.ToText}>To. 제호씨</Text>
+                        <TouchableOpacity
+                            style={styles.iconSend}
+                            activeOpacity={0.6}
+                            onPress={() => {
+                                Keyboard.dismiss()
+                                setVisitModalVisible(false)
+                            }}>
+                            <Image
+                                style={{width: 20, height: 20,}}
+                                source={require('./send.png')}>
+                            </Image>
+                        </TouchableOpacity>      
+                    </View>
+                    <TextInput
+                        style={styles.modalInputText}
+                        scrollEnabled={true}
+                        multiline={true}
+                        blurOnSubmit={true}
+                        onKeyPress={(e) => e.key === 'Enter'}
+                        onChangeText={(text) => {
+                            setNewVisit(text)
+                        }}
+                        placeholder='방명록을 남겨주세요'/>
+                    <Text style={styles.FromText}>From. 선우</Text>
+                </View>
+            </View>
+        </Modal>
+    )
+}
+
+function EventDay(props) {
 
     const initTDname = "이제호";
-    const initNewVisit = "행복하자~";
     const [TDname, setTDName] = useState(initTDname);
-    const [modalVisible, setModalVisible] = useState(false);
+    const initNewVisit = "행복하자~";
+    const [visitModalVisible, setVisitModalVisible] = useState(false);
     const [newVisit, setNewVisit] = useState(initNewVisit);
 
     return (
         <View
             style={styles.container}>
-            <Text style={styles.TDText}>금주의 PICK </Text>
-            <TouchableOpacity 
-                onPress={() => {setModalVisible(true)}}>
-                <Text style={styles.TDnameText}>{TDname}</Text>
-            </TouchableOpacity>
-            <Modal
-                animationType='slide'
-                transparent={true}
-                visible={modalVisible}>
+
+            <View
+                style={{flexDirection: 'row', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
                 <View
-                    style={styles.container}>
-                    <View
-                        style={styles.modalContainer}>
-                        <View
-                            style={{flexDirection: 'row', width: 220,}}>
-                            <Text style={styles.ToText}>To. 제호씨</Text>
-                            <TouchableOpacity
-                                style={styles.iconSend}
-                                activeOpacity={0.6}
-                                onPress={() => {
-                                    Keyboard.dismiss()
-                                    setModalVisible(false)
-                                }}>
-                                <Image
-                                    style={{width: 20, height: 20,}}
-                                    source={require('./send.png')}>
-                                </Image>
-                            </TouchableOpacity>      
-                        </View>
-                        <TextInput
-                            style={styles.modalInputText}
-                            scrollEnabled={true}
-                            multiline={true}
-                            blurOnSubmit={true}
-                            onKeyPress={(e) => e.key === 'Enter'}
-                            onChangeText={(text) => {
-                                setNewVisit(text)
-                            }}
-                            placeholder='방명록을 남겨주세요'/>
-                        <Text style={styles.FromText}>From. 선우</Text>
-                    </View>
+                    style={{flexDirection: 'row', width: '90%',}}>
+                    <Text style={styles.TDText}>금주의 PICK </Text>
+                    <TouchableOpacity 
+                        onPress={() => {setVisitModalVisible(true)}}>
+                        <Text style={styles.TDnameText}>{TDname}</Text>
+                    </TouchableOpacity>
                 </View>
-            </Modal>
+                <TouchableOpacity
+                    onPress={() => {}}>
+                    <Image
+                        style={styles.uploadIcon}
+                        source={require('./upload.png')}>
+                    </Image>
+                </TouchableOpacity> 
+            </View>
+            <VisitModal isVisible = {visitModalVisible} setVisitModalVisible = {setVisitModalVisible} setNewVisit = {setNewVisit}/>
         </View>
     )
 }
@@ -80,7 +105,9 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     TDText: {
-        fontSize: 20
+        fontSize: 20,
+        marginTop: 3,
+        marginLeft: 10
     },
     TDnameText: {
         fontSize: 25,
@@ -124,6 +151,11 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20, 
         marginTop: 8
+    },
+    uploadIcon: {
+        width: 30,
+        height: 30,
+        //marginTop: 5,
     }
 });
 export default EventDay;
