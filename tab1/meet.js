@@ -133,8 +133,6 @@ const styles = StyleSheet.create({
 
 const Default = ({navigation}) => {
 
-  // render(){
-    // const { modalVisible } = this.state; 
     return(
       <Container>
         <MainContainer>

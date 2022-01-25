@@ -36,23 +36,6 @@ const styles = StyleSheet.create({
   }
 })
 
-// const styles = StyleSheet.create({
-//   textInput: {
-//     width: '100%',
-//     height: 70,
-//     paddingTop: 5,
-//     paddingBottom: 5,
-//     backgroundColor: "#ffffff",
-//     shadowColor: "#000",
-//     shadowOffset: {  
-//       width: 0,
-//       height: 2,
-//     },
-//     shadowOpacity: 0.25,
-//     shadowRadius: 3.84,
-//     elevation: 5,
-// });
-
 const Container = styled.View`
   width: 90%;
   margin: 0 auto;
