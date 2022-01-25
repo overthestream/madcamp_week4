@@ -23,7 +23,13 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.2",
     "react-native-swiper": "^1.6.0",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "cross-fetch": "^3.1.5",
+    "form-data": "^4.0.0",
+    "react-native-document-picker": "^8.0.0",
+    "@react-navigation/bottom-tabs": "^6.0.9",
+    "react-native-image-picker": "^4.7.1",
+    "react-native-swipe-list-view": "^3.2.9"
   },
   "devDependencies": {
     "@babel/core": "^7.16.10",
@@ -37,5 +43,25 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "react-native": {
+    "fs": "react-native-level-fs",
+    "path": "path-browserify",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify"
+  },
+  "browser": {
+    "fs": "react-native-level-fs",
+    "path": "path-browserify",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify"
   }
 }
