@@ -9,36 +9,78 @@ import {
     Keyboard,
     Image
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-const Stac
 
 const GHTModal = (props) => {
 
     const {setGhtModalVisible, setNewGht} = props
+    const [singleFile, setSingleFile] = useState('');
+
+    const selectFile = async () => {
+
+        console.log("test")
+    
+        try {
+          const res = await DocumentPicker.pick({
+            type: [DocumentPicker.types.images],
+          });
+          setSingleFile(res);
+        } catch (err) {
+          setSingleFile(null);
+          if (DocumentPicker.isCancel(err)) {
+            alert('Canceled');
+          } else {
+            alert('Unknown Error: ' + JSON.stringify(err));
+            throw err;
+          }
+        }
+    };   
+    
+    const makeImage = (imgUri) => {
+        console.log(imgUri)
+        return (
+            <Image
+                style={{width: 250, height: 250}}
+                source={{uri: {imgUri}}}>
+            </Image>
+        )
+    }
 
     return (
-        <NavigationContainer>
-            <Modal
-                animationType='slide'
-                transparent={true}
-                visible={props.isVisible}>
+        <Modal
+            animationType='slide'
+            transparent={true}
+            visible={props.isVisible}>
+            <View
+                style={styles.container}>
                 <View
-                    style={styles.container}>
+                    style={styles.modalContainer}>
                     <View
-                        style={styles.modalContainer}>
-                        <View
-                            style={styles.selectImgContainer}>
-                            <TouchableOpacity
-                                >
-                                <Text>사진 선택</Text>
-                            </TouchableOpacity>
-                        </View>
+                        style={styles.selectImgContainer}>
+                        <TouchableOpacity
+                            activeOpacity={0.6}
+                            onPress={() => {
+                                // click event
+                                // console.log("ghtModal")
+                                selectFile.bind(this);
+                                makeImage(singleFile.uri);
+                            }}>
+                            <Text>사진 선택</Text>
+                        </TouchableOpacity>
                     </View>
+                    <TextInput
+                        style={styles.textInputContainer}
+                        scrollEnabled={true}
+                        multiline={true}
+                        blurOnSubmit={true}
+                        onKeyPress={(e) => e.key === 'Enter'}
+                        onChangeText={(text) => {
+                            setNewGht(text) // 텍스트만 저장함, 사진 저장도 해야함
+                        }}>
+
+                    </TextInput>
                 </View>
-            </Modal>
-        </NavigationContainer>
+            </View>
+        </Modal>
     )
 } 
 export default GHTModal;
@@ -74,5 +116,14 @@ const styles = StyleSheet.create({
         marginTop: 12,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    textInputContainer: {
+        width: 270,
+        height: 90,
+        borderRadius: 20,
+        borderColor: 'black',
+        borderWidth: 1,
+        marginTop: 12,
+        padding: 10
     }
 })
