@@ -85,29 +85,17 @@ const Profile = () => {
   const uploadImage = async () => {
     if (singleFile != null) {
       const data = new FormData();
-//      data.append('boundary', 'boundary');
-      data.append('imgFile', singleFile);
+      console.log(singleFile);
+      data.append('imgFile', singleFile[0]);
       fetch('http://192.249.18.173:80/user/upload', {
-        method: 'POST',
-        
+        method: 'POST',          headers: {
+            'Accept': '*/*',
+            'Content-Type': 'multipart/form-data',
+          },
+        body: data,
       })
-
-//      data.append('boundary', 'boundary');
-  /*    console.log(data);
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data; boundary=boundary"
-        },
-        data:data,
-        params: { type: 1, userName: userName }
-      };
-
-      const res = await axios.post(
-        'http://192.249.18.173:80/user/upload', data,
-        config
-      );  
-      console.log(res); 
-      */
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
     }
   };     
 
