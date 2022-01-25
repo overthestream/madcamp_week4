@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import VisitItem from './VisitItem';
 import VisitWriter from './VisitWriter';
 
@@ -18,67 +18,48 @@ const VisitListContainer = styled.FlatList`
   background-color: black;
 `;
 
-const VisitList = () => {
-  const HardCodedDataSet = [
-    {
-      from: '지원',
-      message: '제호야 안마셔?',
-      when: new Date(),
-    },
-    {
-      from: '지원',
-      message: '제호야 안마셔?',
-      when: new Date(),
-    },
-    {
-      from: '지원',
-      message: '제호야 안마셔?',
-      when: new Date(),
-    },
-    {
-      from: '지원',
-      message: '제호야 안마셔?',
-      when: new Date(),
-    },
-    {
-      from: '지원',
-      message: '제호야 안마셔?',
-      when: new Date(),
-    },
-    {
-      from: '지원',
-      message: '제호야 안마셔?',
-      when: new Date(),
-    },
-    {
-      from: '지원',
-      message: '제호야 안마셔?',
-      when: new Date(),
-    },
-    {
-      from: '지원',
-      message: '제호야 안마셔?',
-      when: new Date(),
-    },
-    {
-      from: '지원',
-      message: '제호야 안마셔?',
-      when: new Date(),
-    },
-  ];
+const VisitList = (props) => {
+  const { userName } = props;
+
+  const [visitList, setVisitList] = useState([]);
+  useEffect(() => {
+    const url = new URL('http://192.249.18.173:80/visit/list');
+    const query = {
+      name: userName,
+    };
+    Object.keys(query).forEach((key) =>
+      url.searchParams.append(key, query[key]),
+    );
+    fetch(encodeURI(url), {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((json) => setVisitList(json));
+  }, [userName]);
+
   return (
     <Container>
-      <Title>제호에게 한마디</Title>
+      <Title>{userName}에게 한마디</Title>
       <VisitListContainer
-        data={HardCodedDataSet}
+        data={visitList}
         renderItem={(item, index) => {
-          const { when, from, message } = item.item;
+          const { send_when, from_who, message_text } = item.item;
           return (
-            <VisitItem when={when} from={from} message={message} key={index} />
+            <VisitItem
+              when={send_when}
+              from={from_who}
+              message={message_text}
+              userName={userName}
+              key={index}
+            />
           );
         }}
       />
-      <VisitWriter />
+      <VisitWriter
+        setVisitList={setVisitList}
+        visitList={visitList}
+        name={userName}
+      />
     </Container>
   );
 };

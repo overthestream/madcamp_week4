@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 
 const UserItemContainer = styled.View`
   height: 55px;
@@ -13,11 +14,18 @@ const UserItemThumbnail = styled.Image`
   border-radius: 30px;
 `;
 
-const UserItem = ({ imgUrl, name }) => {
+const UserItem = ({ imgUrl, func }) => {
   return (
-    <UserItemContainer>
-      <UserItemThumbnail source={require('./test/scarecrowjeho.jpeg')} />
-    </UserItemContainer>
+    <TouchableOpacity onPress={()=>{console.log('clicked'); func()}}>
+      <UserItemContainer>
+        <UserItemThumbnail
+          source={{
+            uri: imgUrl,
+            method: 'GET',
+          }}
+        />
+      </UserItemContainer>
+    </TouchableOpacity>
   );
 };
 
