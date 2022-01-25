@@ -69,13 +69,20 @@ const DayContainer = styled.View`
   flex: 3;
 
 `;
+const ImageContainer = styled.TouchableOpacity`
+  width: 60%;
+  height: 80%;
+`;
 
 const MeetingCard = (item) => {
   // console.log(item.item.name)
   const title = item.item.name
   // console.log(itemt)
   const navigation = useNavigation();
-  // const day = {item.item.year} 
+
+  const Press = () => {
+    alert('참가 눌림');
+  }
   return(
     <MeetingWrapper>
       <MeetingInner>
@@ -91,10 +98,15 @@ const MeetingCard = (item) => {
           </DayContainer>
         </MeetingInfo>
         <MeetingIcons>
+          <ImageContainer
+            onPress = {Press}
+          >
+
           <Image
             source={require('./tabimg/hand.jpg')}
-            style={{width:'60%', height:'80%'}}
+            style={{width:'100%', height:'100%'}}
           />
+          </ImageContainer>
         </MeetingIcons>
       </MeetingInner>
     </MeetingWrapper>
