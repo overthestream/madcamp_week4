@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import styled from "styled-components";
 import { TextInput ,StyleSheet,SafeAreaView, TouchableOpacity,Platform ,Button,View, Text} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useNavigation } from "@react-navigation/native";
 // import StyleSheet from 'react-native';
 
 
@@ -19,6 +20,13 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: '#cecece',
   },
+  submit : {
+    width: '40%',
+    height: 40,
+    color: 'white',
+    backgroundColor: 'rgba(90, 164, 251, 1)',
+    borderRadius: 10,
+  }
 })
 
 //상단 정보 표기란
@@ -75,16 +83,25 @@ const ButtonWrapper = styled.View`
   /* height: 40px; */
   /* height: 100%; */
   flex-direction: column;
+  margin-top: 30px;
   justify-content: flex-end;
+  align-items: center;
 `;
 
 const ContentContainer = styled.View`
   flex: 8;
 `;
 
-const ButtonContainer = styled.View`
-  
+const SubmitButton = styled.Text`
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
 `;
+const SubmitView = styled.View`
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+`
 
 const WhenToMeet = ({route}) => {
   
@@ -121,6 +138,24 @@ const WhenToMeet = ({route}) => {
 
 
 
+  const submit = () => {
+    const navigation = useNavigation();
+    const sendObj = new Object;
+    sendObj['placeName'] = placeName;
+    sendObj['address'] = address;
+    sendObj['x'] = x;
+    sendObj['y'] = y;
+    sendObj['date'] = date;
+    const params = {
+      'data' : sendObj
+    }
+    
+
+    //서버로 데이터 보내기
+
+    navigation.navigate('Default')
+  }
+
   //글 작성 목록
   const [title,setTitle] = useState("약속 이름을 정해줘");
   const [context,setContext] = useState("약속에 대한 설명을 적어줘");
@@ -142,9 +177,6 @@ const WhenToMeet = ({route}) => {
           </TouchableOpacity>
         </View>
         <View>
-          {/* <TouchableOpacity style={styles.button} onPress={showTimepicker} >
-            <PickText>시간 정하기</PickText>
-          </TouchableOpacity> */}
         </View>
         </PickView>
         {show && (
@@ -188,8 +220,16 @@ const WhenToMeet = ({route}) => {
       </SafeAreaView>
     </UpperContentWrapper>
     
+
+
     <ButtonWrapper>
-      <Text>안녕</Text>
+      <TouchableOpacity style={styles.submit} onPress={submit}>
+        <SubmitView>
+          <View>
+            <SubmitButton>약속 정했다</SubmitButton>
+          </View>
+        </SubmitView>
+      </TouchableOpacity>
     </ButtonWrapper>
     
   </MainView>
