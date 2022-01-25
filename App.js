@@ -19,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator  screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="근황 토크" component={GHT} />
+        <Tab.Screen name="근황 토크" component={PostStackScreen} />
         <Tab.Screen name="약속 잡기" component={MeetStackScreen} />
         <Tab.Screen name="방명록" component={VisitTab}/>
       </Tab.Navigator>
@@ -41,5 +41,14 @@ function MeetStackScreen(){
 
     </Stack.Navigator>
     
+  )
+}
+
+function PostStackScreen(){
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="Original" component={GHT}/>
+      <Stack.Screen name="VisitProfile" component={VisitTab}/>
+    </Stack.Navigator>
   )
 }

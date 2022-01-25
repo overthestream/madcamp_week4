@@ -16,6 +16,7 @@ const GHTModal = (props) => {
     const {setGhtModalVisible, setNewGht} = props
     //const [File, setFile] = useState('');
     const [singleFile, setSingleFile] = useState('');
+    const [isFileNull, setIsFileNull] = useState(true);
     //const [resourcePath, setResourcePath] = useState('');
 
     const selectFile = async () => {
@@ -25,6 +26,7 @@ const GHTModal = (props) => {
             type: [DocumentPicker.types.images],
           });
           setSingleFile(res);
+          setIsFileNull(false);
         } catch (err) {
           setSingleFile(null);
           if (DocumentPicker.isCancel(err)) {
@@ -34,6 +36,9 @@ const GHTModal = (props) => {
             throw err;
           }
         }
+        //console.log(singleFile)
+        //console.log(singleFile[0].uri)
+        
     };
     
     return (
@@ -66,6 +71,7 @@ const GHTModal = (props) => {
                             onPress={() => {
                                 Keyboard.dismiss();
                                 setSingleFile(null);
+                                setIsFileNull(true);
                                 setGhtModalVisible(false)}}>
                             <Image
                                 style={{width: 20, height: 20,}}
@@ -75,12 +81,14 @@ const GHTModal = (props) => {
                     </View>
                     <View
                         style={styles.imageContainer}>
-                        <Image
-                            source={{
-                                uri: singleFile[0].uri ? singleFile[0].uri : ''
-                            }}
-                            style={styles.uploadImage}>
-                        </Image>
+                        {!isFileNull ?
+                            <Image
+                                source={{
+                                    uri: singleFile[0].uri ? singleFile[0].uri : ''
+                                }}
+                                style={styles.uploadImage}>
+                            </Image>
+                        : null}            
                     </View>
                     <TextInput
                         style={styles.textInputContainer}
@@ -88,6 +96,7 @@ const GHTModal = (props) => {
                         multiline={true}
                         blurOnSubmit={true}
                         onKeyPress={(e) => e.key === 'Enter'}
+                        placeholder='이걸해냄'
                         onChangeText={(text) => {
                             setNewGht(text) // 텍스트만 저장함, 사진 저장도 해야함
                         }}>
@@ -154,10 +163,10 @@ const styles = StyleSheet.create({
         width: 250,
         height: 220,
         borderRadius: 20,
-        borderBottom: 5,
-        borderTop: 5,
-        borderLeft: 5,
-        borderRight: 5,
+        // borderBottom: 5,
+        // borderTop: 5,
+        // borderLeft: 5,
+        // borderRight: 5,
     },
     iconSend: {
         width: 20,
