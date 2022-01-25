@@ -14,10 +14,12 @@ import DocumentPicker from 'react-native-document-picker';
 const GHTModal = (props) => {
 
     const {setGhtModalVisible, setNewGht} = props
+    //const [File, setFile] = useState('');
     const [singleFile, setSingleFile] = useState('');
     //const [resourcePath, setResourcePath] = useState('');
 
     const selectFile = async () => {
+
         try {
           const res = await DocumentPicker.pick({
             type: [DocumentPicker.types.images],
@@ -43,36 +45,41 @@ const GHTModal = (props) => {
                 style={styles.container}>
                 <View
                     style={styles.modalContainer}>
-                    <TouchableOpacity
-                        activeOpacity={0.6}
-                        onPress={() => {
-                            Keyboard.dismiss();
-                            setGhtModalVisible(false)}}>
-                        <Image
-                            style={{width: 20, height: 20,}}
-                            source={require('./image/send.png')}>
-                        </Image>
-                    </TouchableOpacity>
                     <View
-                        style={styles.selectImgContainer}>
+                     style={{width: 270, flexDirection: 'row',
+                      justifyContent: 'center', alignItems: 'center',}}>
+                        <View
+                            style={styles.selectImgContainer}>
+                            <TouchableOpacity
+                                activeOpacity={0.6}
+                                onPress={() => {
+                                    // click event
+                                    Keyboard.dismiss();
+                                    selectFile();
+                                }}>
+                                <Text>사진 선택</Text>
+                            </TouchableOpacity>
+                        </View>
                         <TouchableOpacity
+                            style={styles.iconSend}
                             activeOpacity={0.6}
                             onPress={() => {
-                                // click event
-                                // console.log("ghtModal")
                                 Keyboard.dismiss();
-                                selectFile();
-                            }}>
-                            <Text>사진 선택</Text>
+                                setSingleFile(null);
+                                setGhtModalVisible(false)}}>
+                            <Image
+                                style={{width: 20, height: 20,}}
+                                source={require('./image/send.png')}>
+                            </Image>
                         </TouchableOpacity>
                     </View>
                     <View
                         style={styles.imageContainer}>
                         <Image
                             source={{
-                                uri: singleFile.uri
+                                uri: singleFile[0].uri ? singleFile[0].uri : ''
                             }}
-                            style={{width: 250, height: 180}}>
+                            style={styles.uploadImage}>
                         </Image>
                     </View>
                     <TextInput
@@ -84,7 +91,6 @@ const GHTModal = (props) => {
                         onChangeText={(text) => {
                             setNewGht(text) // 텍스트만 저장함, 사진 저장도 해야함
                         }}>
-
                     </TextInput>
                 </View>
             </View>
@@ -116,7 +122,7 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     selectImgContainer: {
-        width: 270,
+        width: 200,
         height: 30,
         borderRadius: 20,
         borderColor: 'black',
@@ -126,8 +132,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     imageContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
         width: 270,
-        height: 200,
+        height: 240,
         borderRadius: 20,
         borderColor: 'black',
         borderWidth: 1,
@@ -139,7 +147,22 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderColor: 'black',
         borderWidth: 1,
-        marginTop: 12,
+        marginTop: 10,
         padding: 10
-    }
+    },
+    uploadImage: {
+        width: 250,
+        height: 220,
+        borderRadius: 20,
+        borderBottom: 5,
+        borderTop: 5,
+        borderLeft: 5,
+        borderRight: 5,
+    },
+    iconSend: {
+        width: 20,
+        height: 20, 
+        marginTop: 12,
+        marginLeft: 10
+    },
 })
