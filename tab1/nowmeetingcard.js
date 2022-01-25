@@ -1,6 +1,15 @@
 import styled from 'styled-components/native';
 import React, {Component} from 'react';
-import {Text,Image} from 'react-native'
+import {Text,Image, TouchableOpacity} from 'react-native'
+import { useNavigation } from '@react-navigation/native';
+
+
+
+
+
+
+
+
 
 const MeetingWrapper = styled.View`
   width: 97%;
@@ -22,7 +31,7 @@ const MeetingInner = styled.View`
   /* flex-direction: column; */
 `;
 
-const MeetingInfo = styled.View`
+const MeetingInfo = styled.TouchableOpacity`
   flex: 8;
   height: 100%;
   margin-left: 15px;
@@ -62,13 +71,18 @@ const DayContainer = styled.View`
 `;
 
 const MeetingCard = (item) => {
-  console.log(item.item.name)
+  // console.log(item.item.name)
   const title = item.item.name
+  // console.log(itemt)
+  const navigation = useNavigation();
   // const day = {item.item.year} 
   return(
     <MeetingWrapper>
       <MeetingInner>
-        <MeetingInfo>
+        <MeetingInfo
+        onPress = {
+          () => navigation.navigate('MeetingDetailInfo',{props:item})
+        }>
           <TitleContainer>
             <TitleText>{title}</TitleText>
           </TitleContainer>

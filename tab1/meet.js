@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
 
 
 export default MeetMainPage = ({navigation}) => {
-
     return(
       <Container>
         <MainContainer>
@@ -156,27 +155,5 @@ export default MeetMainPage = ({navigation}) => {
         <Meetingcardcontainer/>
       </Container>
     );
-  // }
 }
-
-// export const Make = ({navigation}) => {
-//   return(
-//     <SearchLocation/>
-//   );
-// }
-
-// const Stack = createNativeStackNavigator();
-
-// const App = () => {
-//   return(
-//     <NavigationContainer>
-//       <Stack.Navigator screenOptions = {{ headerShown: false }}>
-//         <Stack.Screen name="Default" component={Default}/>
-//         <Stack.Screen name="Make" component={Make}/>
-//         <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
 

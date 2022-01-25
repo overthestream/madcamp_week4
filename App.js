@@ -12,6 +12,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchLocation from './tab1/make/setlocation';
+import MeetingDetail from './tab1/meetdetail/meetdetail';
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -34,17 +36,12 @@ function MeetStackScreen(){
 
   return(
 
-
-    <Stack.Navigator
-    screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Default" component={MeetMainPage}/>
-    <Stack.Screen name="Make" component={SearchLocation}/>
-    <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
-
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Default" component={MeetMainPage}/>
+      <Stack.Screen name = "MeetingDetailInfo" component={MeetingDetail}/>
+      <Stack.Screen name="Make" component={SearchLocation}/>
+      <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
     </Stack.Navigator>
-    
-
-
 
   )
 }

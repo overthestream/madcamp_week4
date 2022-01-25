@@ -76,14 +76,13 @@ const SearchLocation = () => {
       Authorization: 'KakaoAK 505f156e09ef2d3fa5fd8dd6fa3d2d2d'
     }
   });
-
-  const search = () => {
+  useEffect(()=> {
     const queryText = textInput.replace(/^\s+|\s+$/g, '').toString();
     const params = {
       'query' : queryText,
       'size' : 10
     };
-
+  
     Kakao.get('/v2/local/search/keyword',
       {params}
     ).then(function(response){
@@ -91,7 +90,8 @@ const SearchLocation = () => {
     }).catch(function(error){
       console.log(error);
     })
-  }
+    
+  },[textInput])
 
   return(
     <View style={styles.mainView}>
@@ -102,7 +102,7 @@ const SearchLocation = () => {
           onChangeText={setTextInput}
             style={styles.input}
           />
-          <TouchableOpacity onPress={search}>
+          <TouchableOpacity >
             <SearchText>검색</SearchText>
           </TouchableOpacity>
         </TextContainer>

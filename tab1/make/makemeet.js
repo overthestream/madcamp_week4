@@ -74,8 +74,6 @@ const PickView = styled.View`
   margin-left: 10px ;
 `;
 
-
-
 //약속 확정 짓기
 const ButtonWrapper = styled.View`
   width: 100%;
@@ -137,9 +135,9 @@ const WhenToMeet = ({route}) => {
   };
 
 
+  const navigation = useNavigation();
 
   const submit = () => {
-    const navigation = useNavigation();
     const sendObj = new Object;
     sendObj['placeName'] = placeName;
     sendObj['address'] = address;
@@ -150,10 +148,9 @@ const WhenToMeet = ({route}) => {
       'data' : sendObj
     }
     
+    //서버로 데이터 보내는 코드 필요
 
-    //서버로 데이터 보내기
-
-    navigation.navigate('Default')
+    navigation.reset({routes : [{name:"Default"}]})
   }
 
   //글 작성 목록
