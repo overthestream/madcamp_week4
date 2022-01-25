@@ -1,9 +1,12 @@
 import styled from 'styled-components/native';
-import React from 'react';
+import React, { useState } from 'react';
 
 import UserList from './UserList';
 import Profile from './Profile';
 import VisitList from './VisitList';
+
+import UserStore from '../UserStore';
+import { observer } from 'mobx-react';
 
 const Container = styled.View``;
 
@@ -31,19 +34,35 @@ const GHTContainer = styled.FlatList`
   height: 200px;
 `;
 
-const VisitTab = () => {
+const VisitTab = observer(() => {
+  const userStore = UserStore.Store;
+
+  const [name, setName] = useState(userStore.userName);
+  const [userText, setUserText] = useState(userStore.userText);
+  const [userLocation, setUserLocation] = useState(userStore.userLocation);
+  const [imageUrl, setImageUrl] = useState(userStore.image_url);
+
   return (
     <Container>
       <UserListContainer>
-        <UserList />
+        <UserList
+          props={{ setName, setUserLocation, setUserText, setImageUrl }}
+        />
       </UserListContainer>
       <ProfileContainer>
-        <Profile />
+        <Profile
+          props={{
+            name: name,
+            userText: userText,
+            userLocation: userLocation,
+            image_url: imageUrl,
+          }}
+        />
       </ProfileContainer>
-      <VisitList />
+      <VisitList userName={name} />
       <GHTContainer />
     </Container>
   );
-};
+});
 
 export default VisitTab;

@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import { AppRegistry, StyleSheet, Text, View } from "react-native";
+import React, { Component } from 'react';
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // // const ContentOuter = styled.View`
 //   width: 100%;
@@ -34,7 +34,7 @@ const MeetSubDateInfo = styled.View`
   flex: 1;
   justify-content: flex-start;
   color: #000;
-  padding-bottom : 10px;
+  padding-bottom: 10px;
   margin-left: 20px;
 `;
 
@@ -43,7 +43,7 @@ const MainDayMeetInfo = styled.View`
   font-size: 50px;
   padding-left: 20px;
   justify-content: center;
-  letter-spacing: 0.2em;  
+  letter-spacing: 0.2em;
 `;
 
 const MainTitleMeetInfo = styled.View`
@@ -57,7 +57,7 @@ const Title = styled.Text`
   font-size: 22px;
   color: #000;
   line-height: 26px;
-`
+`;
 
 const Day = styled.Text`
   font-size: 50px;
@@ -65,26 +65,25 @@ const Day = styled.Text`
   color: #000;
 `;
 
-const Content = () =>{
+const Content = () => {
   return (
-    
-      <Container>
-        <MeetInfo>
-          <MainDayMeetInfo>
-            <Day>D - 4</Day>
-          </MainDayMeetInfo>
-          <MainTitleMeetInfo>
-            <Title>선우생일기념파티</Title>
-          </MainTitleMeetInfo>
-        </MeetInfo>
-        <MeetSubAddInfo>
-          <Text>광주광역시 북구 오룡동 학사기숙사a동</Text>
-        </MeetSubAddInfo>
-        <MeetSubDateInfo>
-          <Text>2022년 01월 10일</Text>
-        </MeetSubDateInfo>
-      </Container>
+    <Container>
+      <MeetInfo>
+        <MainDayMeetInfo>
+          <Day>D - 4</Day>
+        </MainDayMeetInfo>
+        <MainTitleMeetInfo>
+          <Title>선우생일기념파티</Title>
+        </MainTitleMeetInfo>
+      </MeetInfo>
+      <MeetSubAddInfo>
+        <Text>광주광역시 북구 오룡동 학사기숙사a동</Text>
+      </MeetSubAddInfo>
+      <MeetSubDateInfo>
+        <Text>2022년 01월 10일</Text>
+      </MeetSubDateInfo>
+    </Container>
   );
-}
+};
 
-export default Content
+export default Content;

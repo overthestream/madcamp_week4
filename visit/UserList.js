@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import UserItem from './UserItem';
 
 const UserListContainer = styled.FlatList`
@@ -8,112 +8,34 @@ const UserListContainer = styled.FlatList`
   margin-right: 2%;
 `;
 
-const HardCodedDataSet = [
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: 'visit/test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-  {
-    src: './test/scarecrowjeho.jpeg',
-    name: '이제호',
-  },
-];
-
-const UserList = () => {
+const UserList = ({ props }) => {
+  const { setName, setUserLocation, setUserText, setImageUrl } = props;
+  const [userList, setUserList] = useState([]);
+  useEffect(() => {
+    const url = new URL('http://192.249.18.173:80/user/list');
+    fetch(encodeURI(url), {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((json) => setUserList(json));
+  }, []);
   return (
     <UserListContainer
-      data={HardCodedDataSet}
+      data={userList}
       horizontal={true}
       renderItem={(item, index) => {
-        return <UserItem imgUrl={item.src} name={item.name} key={index} />;
+        return (
+          <UserItem
+            imgUrl={item.item.image_url}
+            func={() => {
+              setName(item.item.user_name);
+              setUserLocation(item.item.user_location);
+              setUserText(item.item.user_text);
+              setImageUrl(item.item.image_url);
+            }}
+            key={index}
+          />
+        );
       }}
     />
   );

@@ -1,17 +1,25 @@
-import React,{useState} from "react";
-import styled from "styled-components";
-import { TextInput ,StyleSheet,SafeAreaView, TouchableOpacity,Platform ,Button,View, Text} from 'react-native';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import {
+  TextInput,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+  Platform,
+  Button,
+  View,
+  Text,
+} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 // import StyleSheet from 'react-native';
 
-
 const styles = StyleSheet.create({
-  button : {
+  button: {
     width: '100%',
     padding: 5,
     borderRadius: 5,
   },
-    input: {
+  input: {
     height: 40,
     margin: 12,
     borderRadius: 10,
@@ -19,7 +27,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: '#cecece',
   },
-})
+});
 
 //상단 정보 표기란
 const MainView = styled.View`
@@ -38,7 +46,7 @@ const MainText = styled.Text`
 const SecondMainText = styled.Text`
   font-size: 16px;
   margin-left: 12px;
-  margin-top: 12px;  
+  margin-top: 12px;
 `;
 
 const WhereToMeet = styled.Text`
@@ -46,7 +54,7 @@ const WhereToMeet = styled.Text`
   color: #000;
   font-weight: 600;
   margin-left: 12px;
-  margin-top: 10px;  
+  margin-top: 10px;
   margin-bottom: 12px;
 `;
 
@@ -63,10 +71,8 @@ const PickText = styled.Text`
 
 const PickView = styled.View`
   flex-direction: row;
-  margin-left: 10px ;
+  margin-left: 10px;
 `;
-
-
 
 //약속 확정 짓기
 const ButtonWrapper = styled.View`
@@ -82,14 +88,11 @@ const ContentContainer = styled.View`
   flex: 8;
 `;
 
-const ButtonContainer = styled.View`
-  
-`;
+const ButtonContainer = styled.View``;
 
-const WhenToMeet = ({route}) => {
-  
+const WhenToMeet = ({ route }) => {
   const data = route.params.props.item;
-  
+
   //전송할 데이터 목록
   const x = data.x;
   const y = data.y;
@@ -119,33 +122,31 @@ const WhenToMeet = ({route}) => {
     showMode('time');
   };
 
-
-
   //글 작성 목록
-  const [title,setTitle] = useState("약속 이름을 정해줘");
-  const [context,setContext] = useState("약속에 대한 설명을 적어줘");
+  const [title, setTitle] = useState('약속 이름을 정해줘');
+  const [context, setContext] = useState('약속에 대한 설명을 적어줘');
 
-  return(
+  return (
     // <Text>안녕하세요</Text>
-  <MainView>
-    <MainText>약속 굳히기</MainText>
-    <UpperContentWrapper>
-      <SecondMainText>우리 여기서 만나기로 했어!</SecondMainText>
-      <WhereToMeet>{placeName}</WhereToMeet>
-    </UpperContentWrapper>
-    <UpperContentWrapper>
-      <SecondMainText>근데 언제 만나?</SecondMainText>
+    <MainView>
+      <MainText>약속 굳히기</MainText>
+      <UpperContentWrapper>
+        <SecondMainText>우리 여기서 만나기로 했어!</SecondMainText>
+        <WhereToMeet>{placeName}</WhereToMeet>
+      </UpperContentWrapper>
+      <UpperContentWrapper>
+        <SecondMainText>근데 언제 만나?</SecondMainText>
         <PickView>
-        <View>
-          <TouchableOpacity style={styles.button} onPress={showDatepicker}>
-            <PickText>날짜 정하기</PickText>
-          </TouchableOpacity>
-        </View>
-        <View>
-          {/* <TouchableOpacity style={styles.button} onPress={showTimepicker} >
+          <View>
+            <TouchableOpacity style={styles.button} onPress={showDatepicker}>
+              <PickText>날짜 정하기</PickText>
+            </TouchableOpacity>
+          </View>
+          <View>
+            {/* <TouchableOpacity style={styles.button} onPress={showTimepicker} >
             <PickText>시간 정하기</PickText>
           </TouchableOpacity> */}
-        </View>
+          </View>
         </PickView>
         {show && (
           <DateTimePicker
@@ -157,44 +158,42 @@ const WhenToMeet = ({route}) => {
             onChange={onChange}
           />
         )}
-    
-        <WhereToMeet>{date.getFullYear()}년 {date.getMonth()+1}월 {date.getDate()}일에 만나자! </WhereToMeet>
-        
-    </UpperContentWrapper>
 
+        <WhereToMeet>
+          {date.getFullYear()}년 {date.getMonth() + 1}월 {date.getDate()}일에
+          만나자!{' '}
+        </WhereToMeet>
+      </UpperContentWrapper>
 
-    <UpperContentWrapper>
-    <SecondMainText>약속의 제목을 정해줘!</SecondMainText>
-    <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText = {setTitle}
-        value = {title}
-      />
-    </SafeAreaView>
-    </UpperContentWrapper>
+      <UpperContentWrapper>
+        <SecondMainText>약속의 제목을 정해줘!</SecondMainText>
+        <SafeAreaView>
+          <TextInput
+            style={styles.input}
+            onChangeText={setTitle}
+            value={title}
+          />
+        </SafeAreaView>
+      </UpperContentWrapper>
 
+      <UpperContentWrapper>
+        <SecondMainText>약속에 대한 설명을 적어줘!</SecondMainText>
+        <SafeAreaView>
+          <TextInput
+            style={styles.input}
+            onChangeText={setContext}
+            multiline
+            numberOfLines={4}
+            value={context}
+          />
+        </SafeAreaView>
+      </UpperContentWrapper>
 
-    <UpperContentWrapper>
-      <SecondMainText>약속에 대한 설명을 적어줘!</SecondMainText>
-      <SafeAreaView>
-        <TextInput
-          style={styles.input}
-          onChangeText = {setContext}
-          multiline
-          numberOfLines={4}
-          value = {context}
-        />
-      </SafeAreaView>
-    </UpperContentWrapper>
-    
-    <ButtonWrapper>
-      <Text>안녕</Text>
-    </ButtonWrapper>
-    
-  </MainView>
-  )
-}
-
+      <ButtonWrapper>
+        <Text>안녕</Text>
+      </ButtonWrapper>
+    </MainView>
+  );
+};
 
 export default WhenToMeet;
