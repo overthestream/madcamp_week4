@@ -6,9 +6,9 @@ import {StyleSheet,Text,Alert, Modal, Pressable, View} from 'react-native';
 import Meetingcardcontainer from './meetingcardcontainer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SearchLocation from './make/setlocation';
+// import SearchLocation from './make/setlocation';
 import WhenToMeet from "./make/makemeet"
-
+import { MainStack } from '../App';
 const MainText = styled.Text`
   font-size: 20px;
   text-align: center;
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
 
 
 
-const Default = ({navigation}) => {
+export default MeetMainPage = ({navigation}) => {
 
     return(
       <Container>
@@ -159,25 +159,24 @@ const Default = ({navigation}) => {
   // }
 }
 
-const Make = ({navigation}) => {
-  return(
-    <SearchLocation/>
-  );
-}
+// export const Make = ({navigation}) => {
+//   return(
+//     <SearchLocation/>
+//   );
+// }
 
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
 
-const App = () => {
-  return(
-    <NavigationContainer>
-      <Stack.Navigator screenOptions = {{ headerShown: false }}>
-        <Stack.Screen name="Default" component={Default}/>
-        <Stack.Screen name="Make" component={Make}/>
-        <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+// const App = () => {
+//   return(
+//     <NavigationContainer>
+//       <Stack.Navigator screenOptions = {{ headerShown: false }}>
+//         <Stack.Screen name="Default" component={Default}/>
+//         <Stack.Screen name="Make" component={Make}/>
+//         <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// }
 
 
-export default App; 
