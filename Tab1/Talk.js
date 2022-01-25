@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import VisitTab from '../visit/VisitTab';
 
 function Talk() {
 
@@ -20,7 +19,6 @@ function Talk() {
     const [name, setName] = useState(initname);
     const [title, setTitle] = useState(initTitle);
 
-    //const Stack = createNativeStackNavigator();
     const navigation = useNavigation();
     return (
         <View
