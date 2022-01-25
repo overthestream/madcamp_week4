@@ -33,8 +33,6 @@ const Stack = createNativeStackNavigator();
 function MeetStackScreen(){
 
   return(
-
-
     <Stack.Navigator
     screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Default" component={MeetMainPage}/>
@@ -43,8 +41,5 @@ function MeetStackScreen(){
 
     </Stack.Navigator>
     
-
-
-
   )
 }

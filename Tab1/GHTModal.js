@@ -9,16 +9,15 @@ import {
     Keyboard,
     Image
 } from 'react-native';
+import DocumentPicker from 'react-native-document-picker';
 
 const GHTModal = (props) => {
 
     const {setGhtModalVisible, setNewGht} = props
     const [singleFile, setSingleFile] = useState('');
+    //const [resourcePath, setResourcePath] = useState('');
 
     const selectFile = async () => {
-
-        console.log("test")
-    
         try {
           const res = await DocumentPicker.pick({
             type: [DocumentPicker.types.images],
@@ -33,18 +32,8 @@ const GHTModal = (props) => {
             throw err;
           }
         }
-    };   
+    };
     
-    const makeImage = (imgUri) => {
-        console.log(imgUri)
-        return (
-            <Image
-                style={{width: 250, height: 250}}
-                source={{uri: {imgUri}}}>
-            </Image>
-        )
-    }
-
     return (
         <Modal
             animationType='slide'
@@ -54,6 +43,16 @@ const GHTModal = (props) => {
                 style={styles.container}>
                 <View
                     style={styles.modalContainer}>
+                    <TouchableOpacity
+                        activeOpacity={0.6}
+                        onPress={() => {
+                            Keyboard.dismiss();
+                            setGhtModalVisible(false)}}>
+                        <Image
+                            style={{width: 20, height: 20,}}
+                            source={require('./image/send.png')}>
+                        </Image>
+                    </TouchableOpacity>
                     <View
                         style={styles.selectImgContainer}>
                         <TouchableOpacity
@@ -61,11 +60,20 @@ const GHTModal = (props) => {
                             onPress={() => {
                                 // click event
                                 // console.log("ghtModal")
-                                selectFile.bind(this);
-                                makeImage(singleFile.uri);
+                                Keyboard.dismiss();
+                                selectFile();
                             }}>
                             <Text>사진 선택</Text>
                         </TouchableOpacity>
+                    </View>
+                    <View
+                        style={styles.imageContainer}>
+                        <Image
+                            source={{
+                                uri: singleFile.uri
+                            }}
+                            style={{width: 250, height: 180}}>
+                        </Image>
                     </View>
                     <TextInput
                         style={styles.textInputContainer}
@@ -109,13 +117,21 @@ const styles = StyleSheet.create({
     },
     selectImgContainer: {
         width: 270,
-        height: 270,
+        height: 30,
         borderRadius: 20,
         borderColor: 'black',
         borderWidth: 1,
         marginTop: 12,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    imageContainer: {
+        width: 270,
+        height: 200,
+        borderRadius: 20,
+        borderColor: 'black',
+        borderWidth: 1,
+        marginTop: 10
     },
     textInputContainer: {
         width: 270,
