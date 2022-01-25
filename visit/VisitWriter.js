@@ -20,6 +20,7 @@ const name = '제호';
 
 const VisitWriter = () => {
   const [text, setText] = useState();
+
   return (
     <Container>
       <Input
