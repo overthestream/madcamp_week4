@@ -12,8 +12,6 @@ import {
 import DocumentPicker from 'react-native-document-picker';
 
 const GHTModal = (props) => {
-  const { setGhtModalVisible, setNewGht } = props;
-  const [singleFile, setSingleFile] = useState('');
 
     const {setGhtModalVisible, setNewGht} = props
     //const [File, setFile] = useState('');

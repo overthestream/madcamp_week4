@@ -11,12 +11,12 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 function Talk() {
-  const initname = '이제호';
-  const initTitle = '"기훈이 형은 인정이지"';
-  const [ULImg, setULImg] = useState(0); // 나중에 수정
-  const [PFImg, setPFImg] = useState(0); // 나중에 수정
-  const [name, setName] = useState(initname);
-  const [title, setTitle] = useState(initTitle);
+  // const initname = '이제호';
+  // const initTitle = '"기훈이 형은 인정이지"';
+  // const [ULImg, setULImg] = useState(0); // 나중에 수정
+  // const [PFImg, setPFImg] = useState(0); // 나중에 수정
+  // const [name, setName] = useState(initname);
+  // const [title, setTitle] = useState(initTitle);
 
     const initname = "이제호";
     const initTitle = "\"기훈이 형은 인정이지\""
