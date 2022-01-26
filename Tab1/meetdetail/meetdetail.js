@@ -125,13 +125,8 @@ const MeetingDetail = (props) => {
             latitude: x, 
             longitude: y, 
             latitudeDelta: 0.0922, 
-            longitudeDelta: 0.0421, }} />
-            <MapView.Marker
-            coordinate={{latitude: x,
-            longitude: y}}
-            title={infomation.place_name}
-            description={infomation.name}
-         />
+            longitudeDelta: 0.0421, }} 
+            />
       </MapContainer>
       <InfoText>어디서?</InfoText>
       <InfoMainText>{infomation.place_name}</InfoMainText>
