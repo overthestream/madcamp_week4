@@ -118,7 +118,7 @@ const MeetingDetail = (props) => {
         <MainInfo>{infomation.name}</MainInfo>
 
         <MapContainer>
-        <MapView 
+        {/* <MapView 
           style={{ flex: 1 }} 
           provider={PROVIDER_GOOGLE} 
           initialRegion={{ 
@@ -131,7 +131,7 @@ const MeetingDetail = (props) => {
             longitude: y}}
             title={infomation.place_name}
             description={infomation.name}
-         />
+         /> */}
       </MapContainer>
       <InfoText>어디서?</InfoText>
       <InfoMainText>{infomation.place_name}</InfoMainText>

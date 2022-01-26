@@ -14,6 +14,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchLocation from './tab1/make/setlocation';
 import Login from './Login/Login'
 import MeetingDetail from './tab1/meetdetail/meetdetail';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -33,10 +34,40 @@ export default function App() {
 
 function MainStackScreen() {
   return (
-    <Tab.Navigator  screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="근황 토크" component={PostStackScreen} />
-      <Tab.Screen name="약속 잡기" component={MeetStackScreen} />
-      <Tab.Screen name="방명록" component={VisitTab}/>
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: "#6867AC",
+        inactiveTintColor: "gray",}}>
+        <Tab.Screen name="근황 토크" component={PostStackScreen} 
+          options={{
+            tabBarIcon: ({focused}) => (
+              <Ionicons
+                name="images-outline"
+                style={{color: focused ? "#6867AC" : "gray"}}
+                size={25}
+              />
+            )
+        }}/>
+        <Tab.Screen name="약속 잡기" component={MeetStackScreen}
+          options={{
+            tabBarIcon: ({focused}) => (
+              <Ionicons
+                name="alarm-outline"
+                style={{color: focused ? "#6867AC" : "gray"}}
+                size={25}
+              />
+            )
+          }}/>
+        <Tab.Screen name="방명록" component={VisitTab}
+          options={{
+            tabBarIcon: ({focused}) => (
+              <Ionicons
+                name="people-outline"
+                style={{color: focused ? "#6867AC" : "gray"}}
+                size={25}
+              />
+            )
+          }}/>
     </Tab.Navigator>
   )
 }

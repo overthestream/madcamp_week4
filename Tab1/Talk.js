@@ -18,43 +18,36 @@ function Talk() {
   const [name, setName] = useState(initname);
   const [title, setTitle] = useState(initTitle);
 
-    const initname = "이제호";
-    const initTitle = "\"기훈이 형은 인정이지\""
-    const [ULImg, setULImg] = useState(0); // 나중에 수정
-    const [PFImg, setPFImg] = useState(0); // 나중에 수정
-    const [name, setName] = useState(initname);
-    const [title, setTitle] = useState(initTitle);
-
-    const navigation = useNavigation();
-    return (
-        <View
-        style={styles.container}>
-        <Image
-            style={styles.uploadImg}
-            source={require('./image/NMImg.jpeg')}>
-        </Image>
-        <View style={styles.Info}>
-            <TouchableOpacity 
-                style={styles.profileImgTouch}
-                onPress={() => 
-                    //Alert.alert('click...');
-                    navigation.navigate("VisitProfile")
-                } 
-                activeOpacity={0.6}>
-                <Image
-                    style={styles.profileImg}
-                    source={require('./image/JHImg.jpeg')}>
-                </Image>
-            </TouchableOpacity>
-            <Text style={styles.Name}>
-                {name}
-            </Text>
-            <Text style={styles.Title}>
-                {title}
-            </Text>
-        </View>
-    </View>
-    );
+  const navigation = useNavigation();
+  return (
+      <View
+      style={styles.container}>
+      <Image
+          style={styles.uploadImg}
+          source={require('./image/NMImg.jpeg')}>
+      </Image>
+      <View style={styles.Info}>
+          <TouchableOpacity 
+              style={styles.profileImgTouch}
+              onPress={() => 
+                  //Alert.alert('click...');
+                  navigation.navigate("VisitProfile")
+              } 
+              activeOpacity={0.6}>
+              <Image
+                  style={styles.profileImg}
+                  source={require('./image/JHImg.jpeg')}>
+              </Image>
+          </TouchableOpacity>
+          <Text style={styles.Name}>
+              {name}
+          </Text>
+          <Text style={styles.Title}>
+              {title}
+          </Text>
+      </View>
+  </View>
+  );
 }
 
 const styles = StyleSheet.create({
