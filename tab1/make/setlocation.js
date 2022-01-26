@@ -84,22 +84,22 @@ const SearchLocation = () => {
       Authorization: 'KakaoAK 505f156e09ef2d3fa5fd8dd6fa3d2d2d',
     },
   });
-
-  const search = () => {
+  useEffect(()=> {
     const queryText = textInput.replace(/^\s+|\s+$/g, '').toString();
     const params = {
       query: queryText,
       size: 10,
     };
-
-    Kakao.get('/v2/local/search/keyword', { params })
-      .then(function (response) {
-        setSearchValue(response.data.documents);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  
+    Kakao.get('/v2/local/search/keyword',
+      {params}
+    ).then(function(response){
+      setSearchValue(response.data.documents);
+    }).catch(function(error){
+      console.log(error);
+    })
+    
+  },[textInput])
 
   return (
     <View style={styles.mainView}>

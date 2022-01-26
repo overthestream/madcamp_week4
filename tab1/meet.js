@@ -128,48 +128,31 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MeetMainPage = ({ navigation }) => {
-  return (
-    <Container>
-      <MainContainer>
-        <MainText>우리 또 만나</MainText>
-      </MainContainer>
-      <SwiperContainer>
-        <SwiperComponent />
-      </SwiperContainer>
-      <SecondContainer>
-        <SecondText>가고 싶은 약속들</SecondText>
-        <BtnWrapper>
-          <MakeBtn
-            title="약속 만들기"
-            onPress={() => navigation.navigate('Make')}
-          >
-            <BtnText>약속 만들기</BtnText>
-          </MakeBtn>
-        </BtnWrapper>
-      </SecondContainer>
-      <Meetingcardcontainer />
-    </Container>
-  );
-  // }
-};
 
-// export const Make = ({navigation}) => {
-//   return(
-//     <SearchLocation/>
-//   );
-// }
 
-// const Stack = createNativeStackNavigator();
+export default MeetMainPage = ({navigation}) => {
+    return(
+      <Container>
+        <MainContainer>
+          <MainText>우리 또 만나</MainText>
+        </MainContainer>
+        <SwiperContainer>
+          <SwiperComponent/>
+        </SwiperContainer>
+        <SecondContainer>
+          <SecondText>가고 싶은 약속들</SecondText>
+          <BtnWrapper>
+            <MakeBtn
+              title="약속 만들기"
+              onPress={()=>navigation.navigate('Make')}>
+              <BtnText>
+              약속 만들기
+              </BtnText>
+            </MakeBtn>
+          </BtnWrapper>
+        </SecondContainer>
+        <Meetingcardcontainer/>
+      </Container>
+    );
+}
 
-// const App = () => {
-//   return(
-//     <NavigationContainer>
-//       <Stack.Navigator screenOptions = {{ headerShown: false }}>
-//         <Stack.Screen name="Default" component={Default}/>
-//         <Stack.Screen name="Make" component={Make}/>
-//         <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
