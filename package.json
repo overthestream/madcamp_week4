@@ -35,6 +35,7 @@
     "react-native-screens": "^3.10.2",
     "react-native-swipe-list-view": "^3.2.9",
     "react-native-swiper": "^1.6.0",
+    "react-native-vector-icons": "^9.0.0",
     "styled-components": "^5.3.3",
     "update": "^0.7.4"
   },
