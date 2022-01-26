@@ -106,7 +106,7 @@ const SearchLocation = () => {
       <InputContainer>
         <TextContainer>
           <TextInput onChangeText={setTextInput} style={styles.input} />
-          <TouchableOpacity onPress={search}>
+          <TouchableOpacity>
             <SearchText>검색</SearchText>
           </TouchableOpacity>
         </TextContainer>
