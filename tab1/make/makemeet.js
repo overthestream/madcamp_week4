@@ -11,7 +11,7 @@ import {
   Text,
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
 // import StyleSheet from 'react-native';
 
 const styles = StyleSheet.create({
@@ -28,14 +28,14 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: '#cecece',
   },
-  submit : {
+  submit: {
     width: '40%',
     height: 40,
     color: 'white',
     backgroundColor: 'rgba(90, 164, 251, 1)',
     borderRadius: 10,
-  }
-})
+  },
+});
 
 //상단 정보 표기란
 const MainView = styled.View`
@@ -107,7 +107,7 @@ const SubmitView = styled.View`
   align-items: center;
   justify-content: center;
   flex: 1;
-`
+`;
 
 const WhenToMeet = ({ route }) => {
   const data = route.params.props.item;
@@ -141,24 +141,23 @@ const WhenToMeet = ({ route }) => {
     showMode('time');
   };
 
-
   const navigation = useNavigation();
 
   const submit = () => {
-    const sendObj = new Object;
+    const sendObj = new Object();
     sendObj['placeName'] = placeName;
     sendObj['address'] = address;
     sendObj['x'] = x;
     sendObj['y'] = y;
     sendObj['date'] = date;
     const params = {
-      'data' : sendObj
-    }
-    
+      data: sendObj,
+    };
+
     //서버로 데이터 보내는 코드 필요
 
-    navigation.reset({routes : [{name:"Default"}]})
-  }
+    navigation.reset({ routes: [{ name: 'Default' }] });
+  };
 
   //글 작성 목록
   const [title, setTitle] = useState('약속 이름을 정해줘');
@@ -175,13 +174,12 @@ const WhenToMeet = ({ route }) => {
       <UpperContentWrapper>
         <SecondMainText>근데 언제 만나?</SecondMainText>
         <PickView>
-        <View>
-          <TouchableOpacity style={styles.button} onPress={showDatepicker}>
-            <PickText>날짜 정하기</PickText>
-          </TouchableOpacity>
-        </View>
-        <View>
-        </View>
+          <View>
+            <TouchableOpacity style={styles.button} onPress={showDatepicker}>
+              <PickText>날짜 정하기</PickText>
+            </TouchableOpacity>
+          </View>
+          <View></View>
         </PickView>
         {show && (
           <DateTimePicker
@@ -193,52 +191,48 @@ const WhenToMeet = ({ route }) => {
             onChange={onChange}
           />
         )}
-    
-        <WhereToMeet>{date.getFullYear()}년 {date.getMonth()+1}월 {date.getDate()}일에 만나자! </WhereToMeet>
-        
-    </UpperContentWrapper>
 
+        <WhereToMeet>
+          {date.getFullYear()}년 {date.getMonth() + 1}월 {date.getDate()}일에
+          만나자!{' '}
+        </WhereToMeet>
+      </UpperContentWrapper>
 
-    <UpperContentWrapper>
-    <SecondMainText>약속의 제목을 정해줘!</SecondMainText>
-    <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText = {setTitle}
-        value = {title}
-      />
-    </SafeAreaView>
-    </UpperContentWrapper>
+      <UpperContentWrapper>
+        <SecondMainText>약속의 제목을 정해줘!</SecondMainText>
+        <SafeAreaView>
+          <TextInput
+            style={styles.input}
+            onChangeText={setTitle}
+            value={title}
+          />
+        </SafeAreaView>
+      </UpperContentWrapper>
 
+      <UpperContentWrapper>
+        <SecondMainText>약속에 대한 설명을 적어줘!</SecondMainText>
+        <SafeAreaView>
+          <TextInput
+            style={styles.input}
+            onChangeText={setContext}
+            multiline
+            numberOfLines={4}
+            value={context}
+          />
+        </SafeAreaView>
+      </UpperContentWrapper>
 
-    <UpperContentWrapper>
-      <SecondMainText>약속에 대한 설명을 적어줘!</SecondMainText>
-      <SafeAreaView>
-        <TextInput
-          style={styles.input}
-          onChangeText = {setContext}
-          multiline
-          numberOfLines={4}
-          value = {context}
-        />
-      </SafeAreaView>
-    </UpperContentWrapper>
-    
-
-
-    <ButtonWrapper>
-      <TouchableOpacity style={styles.submit} onPress={submit}>
-        <SubmitView>
-          <View>
-            <SubmitButton>약속 정했다</SubmitButton>
-          </View>
-        </SubmitView>
-      </TouchableOpacity>
-    </ButtonWrapper>
-    
-  </MainView>
-  )
-}
-
+      <ButtonWrapper>
+        <TouchableOpacity style={styles.submit} onPress={submit}>
+          <SubmitView>
+            <View>
+              <SubmitButton>약속 정했다</SubmitButton>
+            </View>
+          </SubmitView>
+        </TouchableOpacity>
+      </ButtonWrapper>
+    </MainView>
+  );
+};
 
 export default WhenToMeet;

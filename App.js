@@ -12,7 +12,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchLocation from './tab1/make/setlocation';
-import Login from './Login/Login'
+import Login from './Login/Login';
 import MeetingDetail from './tab1/meetdetail/meetdetail';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -23,14 +23,13 @@ export default function App() {
   console.log('main');
   return (
     <NavigationContainer>
-      <Stack.Navigator
-      screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Login" component={Login}/>
-        <Stack.Screen name="main" component={MainStackScreen}/>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="main" component={MainStackScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-}  
+}
 
 function MainStackScreen() {
   return (
@@ -69,29 +68,24 @@ function MainStackScreen() {
             )
           }}/>
     </Tab.Navigator>
-  )
+  );
 }
 
-function MeetStackScreen(){
-
-  return(
-    <Stack.Navigator
-    screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Default" component={MeetMainPage}/>
-    <Stack.Screen name="Make" component={SearchLocation}/>
-    <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
-
+function MeetStackScreen() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Default" component={MeetMainPage} />
+      <Stack.Screen name="Make" component={SearchLocation} />
+      <Stack.Screen name="WhenToMeet" component={WhenToMeet} />
     </Stack.Navigator>
-    
-  )
+  );
 }
 
-function PostStackScreen(){
-  return(
-    <Stack.Navigator
-    screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Original" component={GHT}/>
-      <Stack.Screen name="VisitProfile" component={VisitTab}/>
+function PostStackScreen() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Original" component={GHT} />
+      <Stack.Screen name="VisitProfile" component={VisitTab} />
     </Stack.Navigator>
-  )
+  );
 }
