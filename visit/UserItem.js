@@ -16,7 +16,12 @@ const UserItemThumbnail = styled.Image`
 
 const UserItem = ({ imgUrl, func }) => {
   return (
-    <TouchableOpacity onPress={()=>{console.log('clicked'); func()}}>
+    <TouchableOpacity
+      onPress={() => {
+        console.log('clicked');
+        func();
+      }}
+    >
       <UserItemContainer>
         <UserItemThumbnail
           source={{

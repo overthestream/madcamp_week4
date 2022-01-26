@@ -8,7 +8,7 @@ import ScrollView from 'react-native';
 import UserStore from '../UserStore';
 import { observer } from 'mobx-react';
 
-const Container = styled.ScrollView``;
+const Container = styled.View``;
 
 const UserListContainer = styled.View`
   height: 75px;
@@ -33,7 +33,6 @@ const ProfileContainer = styled.View`
   margin-left: 4%;
   margin-right: 4%;
   border-radius: 10px;
-  margin-bottom: 10px;
 `;
 
 const GHTContainer = styled.FlatList`
