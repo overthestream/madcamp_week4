@@ -12,6 +12,8 @@ target 'madcamp_week4' do
     :hermes_enabled => false
   )
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'madcamp_week4Tests' do
     inherit! :complete
     # Pods for testing
