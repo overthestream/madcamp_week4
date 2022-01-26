@@ -81,11 +81,11 @@ const Profile = observer((props) => {
   const [isSetting, setIsSetting] = useState(false);
   const [singleFile, setSingleFile] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     setImageUrl(image_url);
     setText(userText);
     setLocation(userLocation);
-  },[image_url, userText, userLocation])
+  }, [image_url, userText, userLocation]);
 
   const selectFile = async () => {
     try {

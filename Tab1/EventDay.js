@@ -12,7 +12,7 @@ import {
 import VisitModal from './VisitModal';
 import GHTModal from './GHTModal';
 
-function EventDay(props) {
+function EventDay({refresh, setRefresh}) {
   const initTDname = '이제호';
   const initNewVisit = '행복하자~';
   const initNewGht = '나디나니다니다니다니다닏나ㅣㄷ';
@@ -59,6 +59,8 @@ function EventDay(props) {
         setNewVisit={setNewVisit}
       />
       <GHTModal
+        refresh={refresh}
+        setRefresh={setRefresh}
         isVisible={ghtModalVisible}
         setGhtModalVisible={setGhtModalVisible}
         setNewGht={setNewGht}
