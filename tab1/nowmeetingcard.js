@@ -1,15 +1,7 @@
 import styled from 'styled-components/native';
-import React, {Component} from 'react';
-import {Text,Image, TouchableOpacity} from 'react-native'
+import React, { Component } from 'react';
+import { Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-
-
-
-
-
-
-
 
 const MeetingWrapper = styled.View`
   width: 97%;
@@ -75,20 +67,21 @@ const ImageContainer = styled.TouchableOpacity`
 
 const MeetingCard = (item) => {
   // console.log(item.item.name)
-  const title = item.item.name
+  const title = item.item.name;
   // console.log(itemt)
   const navigation = useNavigation();
 
   const Press = () => {
     alert('참가 눌림');
-  }
-  return(
+  };
+  return (
     <MeetingWrapper>
       <MeetingInner>
         <MeetingInfo
-        onPress = {
-          () => navigation.navigate('MeetingDetailInfo',{props:item})
-        }>
+          onPress={() =>
+            navigation.navigate('MeetingDetailInfo', { props: item })
+          }
+        >
           <TitleContainer>
             <TitleText>{title}</TitleText>
           </TitleContainer>
@@ -99,14 +92,11 @@ const MeetingCard = (item) => {
           </DayContainer>
         </MeetingInfo>
         <MeetingIcons>
-          <ImageContainer
-            onPress = {Press}
-          >
-
-          <Image
-            source={require('./tabimg/hand.jpg')}
-            style={{width:'100%', height:'100%'}}
-          />
+          <ImageContainer onPress={Press}>
+            <Image
+              source={require('./tabimg/hand.jpg')}
+              style={{ width: '100%', height: '100%' }}
+            />
           </ImageContainer>
         </MeetingIcons>
       </MeetingInner>

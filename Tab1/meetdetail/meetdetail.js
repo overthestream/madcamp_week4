@@ -1,9 +1,8 @@
-import React from "react";
-import {View, Text, TouchableOpacity} from 'react-native';
-import styled from "styled-components";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import { useNavigation } from "@react-navigation/native";
-
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import styled from 'styled-components';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { useNavigation } from '@react-navigation/native';
 
 const MainView = styled.View`
   width: 100%;
@@ -29,10 +28,10 @@ const MainInfo = styled.Text`
   margin-bottom: 20px;
   color: #000000;
   line-height: 26px;
-`
+`;
 const MapContainer = styled.View`
-  width : 100%;
-  height : 250px;
+  width: 100%;
+  height: 250px;
 `;
 
 const InfoText = styled.Text`
@@ -54,7 +53,7 @@ const InfoMainText = styled.Text`
   color: #000000;
 `;
 const AddressText = styled.Text`
-  font-weight: 300; 
+  font-weight: 300;
   font-size: 14px;
   line-height: 16px;
   align-items: center;
@@ -77,15 +76,15 @@ const GoBtn = styled.TouchableOpacity`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   height: 40px;
-  width : 80%;
-`
+  width: 80%;
+`;
 
 const TextWrapper = styled.View`
   justify-content: center;
   align-items: center;
   flex: 1;
   width: 100%;
-  height: 100%;;
+  height: 100%; ;
 `;
 
 const GoText = styled.Text`
@@ -93,10 +92,8 @@ const GoText = styled.Text`
   line-height: 18px;
   /* identical to box height */
 
-
-  color: #FFFFFF;
+  color: #ffffff;
 `;
-
 
 const MeetingDetail = (props) => {
   const infomation = props.route.params.props.item;
@@ -104,53 +101,54 @@ const MeetingDetail = (props) => {
 
   const navigation = useNavigation();
   const BtnClick = () => {
-    alert('버튼 누름')
-    navigation.reset({routes : [{name:"Default"}]})
-  }
+    alert('버튼 누름');
+    navigation.reset({ routes: [{ name: 'Default' }] });
+  };
   const x = infomation.x;
   const y = infomation.y;
   const myLatLng = { lat: x, lng: y };
   return (
     <MainView>
       <MainText>초대합니다</MainText>
-      
+
       <InfoView>
         <MainInfo>{infomation.name}</MainInfo>
 
         <MapContainer>
-        <MapView 
-          style={{ flex: 1 }} 
-          provider={PROVIDER_GOOGLE} 
-          initialRegion={{ 
-            latitude: x, 
-            longitude: y, 
-            latitudeDelta: 0.0922, 
-            longitudeDelta: 0.0421, }} />
-            <MapView.Marker
-            coordinate={{latitude: x,
-            longitude: y}}
+          <MapView
+            style={{ flex: 1 }}
+            provider={PROVIDER_GOOGLE}
+            initialRegion={{
+              latitude: x,
+              longitude: y,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+          />
+          <MapView.Marker
+            coordinate={{ latitude: x, longitude: y }}
             title={infomation.place_name}
             description={infomation.name}
-         />
-      </MapContainer>
-      <InfoText>어디서?</InfoText>
-      <InfoMainText>{infomation.place_name}</InfoMainText>
-      <AddressText>{infomation.address}</AddressText>
-      <InfoText>언제?</InfoText>
-      <InfoMainText>{infomation.year}년 {infomation.month}월 {infomation.day}일</InfoMainText>
-      <BottomView/>
-      <GoBtnContainer>
-        <GoBtn onPress={BtnClick}>
-          <TextWrapper>
-            <GoText>
-              나도 가고싶어!
-            </GoText>
-          </TextWrapper>
-        </GoBtn>
-      </GoBtnContainer>
+          />
+        </MapContainer>
+        <InfoText>어디서?</InfoText>
+        <InfoMainText>{infomation.place_name}</InfoMainText>
+        <AddressText>{infomation.address}</AddressText>
+        <InfoText>언제?</InfoText>
+        <InfoMainText>
+          {infomation.year}년 {infomation.month}월 {infomation.day}일
+        </InfoMainText>
+        <BottomView />
+        <GoBtnContainer>
+          <GoBtn onPress={BtnClick}>
+            <TextWrapper>
+              <GoText>나도 가고싶어!</GoText>
+            </TextWrapper>
+          </GoBtn>
+        </GoBtnContainer>
       </InfoView>
     </MainView>
   );
-}
+};
 
 export default MeetingDetail;

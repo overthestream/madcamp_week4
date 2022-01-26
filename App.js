@@ -31,16 +31,13 @@ export default function App() {
 
 const Stack = createNativeStackNavigator();
 
-function MeetStackScreen(){
-
-  return(
-
+function MeetStackScreen() {
+  return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Default" component={MeetMainPage}/>
-      <Stack.Screen name = "MeetingDetailInfo" component={MeetingDetail}/>
-      <Stack.Screen name="Make" component={SearchLocation}/>
-      <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
+      <Stack.Screen name="Default" component={MeetMainPage} />
+      <Stack.Screen name="MeetingDetailInfo" component={MeetingDetail} />
+      <Stack.Screen name="Make" component={SearchLocation} />
+      <Stack.Screen name="WhenToMeet" component={WhenToMeet} />
     </Stack.Navigator>
-
-  )
+  );
 }
