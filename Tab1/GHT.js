@@ -17,12 +17,14 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 
 function GHT() {
   const [GHTList, setGHTList] = useState([]);
+
+  const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     fetch('http://192.249.18.173:80/GHT/list')
       .then((res) => res.json())
       .then((json) => setGHTList(json))
       .catch((err) => console.log(err));
-  }, []);
+  }, [refresh]);
 
   const [commentList, setCommentList] = useState([null]);
   useEffect(() => {
@@ -57,7 +59,7 @@ function GHT() {
       {/* <View> */}
       {/* style={{flexDirection: 'row', width: '100%', 
                 borderColor: 'black', borderWidth: 1}}> */}
-      <EventDay />
+      <EventDay refresh={refresh} setRefresh={setRefresh} />
       {/* </View> */}
 
       <SwipeListView

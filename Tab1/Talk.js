@@ -36,7 +36,6 @@ function Talk({ initName, initTitle, GHT_image }) {
       .catch((err) => console.error(err));
   });
 
-
   return (
     <View style={styles.container}>
       <Image
@@ -49,7 +48,7 @@ function Talk({ initName, initTitle, GHT_image }) {
       <View style={styles.Info}>
         <TouchableOpacity
           style={styles.profileImgTouch}
-          onPress={() => navigation.navigate("VisitProfile")} // click event 로 프로필창? 보이게
+          onPress={() => navigation.navigate('VisitProfile')} // click event 로 프로필창? 보이게
           activeOpacity={0.6}
         >
           <Image
@@ -64,7 +63,7 @@ function Talk({ initName, initTitle, GHT_image }) {
         <Text style={styles.Title}>{title}</Text>
       </View>
     </View>
-    );
+  );
 }
 
 const styles = StyleSheet.create({
