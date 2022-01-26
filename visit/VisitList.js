@@ -6,7 +6,7 @@ import VisitWriter from './VisitWriter';
 const Container = styled.View`
   background-color: rgba(234, 234, 234, 1);
   border: rgba(226, 225, 225, 1);
-  height: 400px;
+  height: 250px;
   padding: 10px;
   margin: 4%;
   border-radius: 10px;

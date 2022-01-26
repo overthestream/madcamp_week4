@@ -101,7 +101,7 @@ const MeetingCard = (item) => {
         <MeetingIcons>
           <ImageContainer
             onPress = {Press}
-          >2
+          >
           <Image
             source={require('./tabimg/hand.jpg')}
             style={{width:'100%', height:'100%'}}
