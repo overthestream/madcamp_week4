@@ -7,8 +7,10 @@ import VisitList from './VisitList';
 import ScrollView from 'react-native';
 import UserStore from '../UserStore';
 import { observer } from 'mobx-react';
-
-const Container = styled.View``;
+// import Talk from '../tab1/Talk';
+import GHT from './UserGHT';
+import { SafeAreaView } from 'react-native';
+const Container = styled.ScrollView``;
 
 const UserListContainer = styled.View`
   height: 75px;
@@ -40,7 +42,7 @@ const GHTContainer = styled.FlatList`
   margin-left: 4%;
   margin-right: 4%;
   border-radius: 10px;
-  height: 200px;
+  height: 400px;
 `;
 
 const VisitTab = observer(() => {
@@ -52,7 +54,8 @@ const VisitTab = observer(() => {
   const [imageUrl, setImageUrl] = useState(userStore.image_url);
 
   return (
-    <Container>
+    <SafeAreaView>
+      <Container>
       <UserListContainer>
         <UserList
           props={{ setName, setUserLocation, setUserText, setImageUrl }}
@@ -69,8 +72,10 @@ const VisitTab = observer(() => {
         />
       </ProfileContainer>
       <VisitList userName={name} />
-      <GHTContainer />
+      {/* <GHTContainer /> */}
+      <GHT/>  
     </Container>
+    </SafeAreaView>
   );
 });
 
