@@ -1,21 +1,37 @@
 import styled from 'styled-components/native';
 import React, { useState } from 'react';
 import UserStore from '../UserStore';
+import { TouchableOpacity, Text } from 'react-native';
 
 const Container = styled.View`
   height: 30px;
   flex-direction: row;
-  background-color: red;
-  margin-top: 3px;
-  border-radius: 5px;
+  background-color:  #F4F4F4;
+  margin-top: 8px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  justify-content: space-between;
   padding: 0px;
 `;
 const Input = styled.TextInput`
+  flex: 1;
   margin-left: 2px;
   padding: 0px; ;
+  /* background-color: aqua; */
 `;
 
-const Submit = styled.Button``;
+const Submit = styled.TouchableOpacity`
+  height: 100%;
+  width: 60px;
+  background-color: rgba(255, 211, 211, 1);
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+`;
+
+const SubmitText = styled.Text`
+  color: white;
+`;
 
 const VisitWriter = ({ name, setVisitList, visitList }) => {
   const [text, setText] = useState();
@@ -28,7 +44,6 @@ const VisitWriter = ({ name, setVisitList, visitList }) => {
         onChangeText={setText}
       />
       <Submit
-        title={'v'}
         onPress={() => {
           if (text) {
             const newMsg = {
@@ -53,7 +68,11 @@ const VisitWriter = ({ name, setVisitList, visitList }) => {
             alert(`${name}에게 한마디를 입력해보세요!`);
           }
         }}
-      />
+      >
+        <SubmitText>
+          보내기
+        </SubmitText>
+      </Submit>
     </Container>
   );
 };
