@@ -1,17 +1,19 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
-    StyleSheet,
-    View,
-    Text,
-    TouchableOpacity,
-    TextInput,
-    Modal,
-    Keyboard,
-    Image
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Modal,
+  Keyboard,
+  Image,
 } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 
 const GHTModal = (props) => {
+  const { setGhtModalVisible, setNewGht } = props;
+  const [singleFile, setSingleFile] = useState('');
 
     const {setGhtModalVisible, setNewGht} = props
     //const [File, setFile] = useState('');

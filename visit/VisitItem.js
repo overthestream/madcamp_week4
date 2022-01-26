@@ -12,16 +12,14 @@ const Title = styled.Text`
 const Message = styled.Text``;
 const When = styled.Text``;
 
-const userName = '제호';
-
-const VisitItem = ({ from, message, when }) => {
+const VisitItem = ({ userName, from, message, when }) => {
   return (
     <Container>
       <Title>
         from {from} to {userName}
       </Title>
       <Message> {message}</Message>
-      <When>{when.toLocaleDateString()}</When>
+      <When>{when.slice(0, 10)}</When>
     </Container>
   );
 };

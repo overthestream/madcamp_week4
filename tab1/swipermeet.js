@@ -1,10 +1,9 @@
-import React, {Component} from "react";
-import { AppRegistry, StyleSheet, Text, View } from "react-native";
+import React, { Component } from 'react';
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 import Swiper from 'react-native-swiper';
-import styled from "styled-components";
-import Content from "./meeting";
-
+import styled from 'styled-components';
+import Content from './meeting';
 
 const styles = StyleSheet.create({
   wrapper: {},
@@ -32,20 +31,19 @@ const styles = StyleSheet.create({
   text: {
     color: '#fff',
     fontSize: 30,
-    fontWeight: 'bold'
-  }
-})
+    fontWeight: 'bold',
+  },
+});
 
 const Container = styled.View`
   width: 90%;
   margin: 0 auto;
   height: 150px;
-  background: #F4F4F4;
+  background: #f4f4f4;
   border-radius: 20px;
   display: flex;
   box-shadow: 10px 5px 5px black;
-
-`
+`;
 const OuterContainer = styled.View`
   height: 100%;
 `;
@@ -55,18 +53,18 @@ export default class SwiperComponent extends React.Component {
     return (
       <OuterContainer>
         <Swiper style={styles.wrapper}>
-          <Container> 
-            <Content/>
+          <Container>
+            <Content />
           </Container>
           <Container>
-            <Content/>
+            <Content />
           </Container>
           <Container>
-            <Content/>
+            <Content />
           </Container>
         </Swiper>
       </OuterContainer>
-    )
+    );
   }
 }
 // AppRegistry.registerComponent('WEEK4', () => SwiperComponent)

@@ -13,12 +13,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchLocation from './tab1/make/setlocation';
 import Login from './Login/Login'
+import MeetingDetail from './tab1/meetdetail/meetdetail';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  console.log("main")
+  console.log('main');
   return (
     <NavigationContainer>
       <Stack.Navigator

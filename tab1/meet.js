@@ -1,26 +1,26 @@
 import styled from 'styled-components/native';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import SwiperComponent from './swipermeet';
 // import MeetingCard from './nowmeetingcard';
-import {StyleSheet,Text,Alert, Modal, Pressable, View} from 'react-native';
+import { StyleSheet, Text, Alert, Modal, Pressable, View } from 'react-native';
 import Meetingcardcontainer from './meetingcardcontainer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import SearchLocation from './make/setlocation';
-import WhenToMeet from "./make/makemeet"
+import WhenToMeet from './make/makemeet';
 import { MainStack } from '../App';
 const MainText = styled.Text`
   font-size: 20px;
   text-align: center;
   margin: 10px;
   color: #000;
-`
+`;
 const Container = styled.View`
   flex: 1;
   align-items: center;
   flex-direction: column;
   background-color: #f5fcff;
-`
+`;
 const MainContainer = styled.View`
   display: flex;
   margin-left: 17px;
@@ -66,20 +66,19 @@ const MeetingWrapper = styled.View`
 `;
 
 const BtnWrapper = styled.View`
-  align-items:flex-end;
-  justify-content:center;
+  align-items: flex-end;
+  justify-content: center;
 `;
 
 const MakeBtn = styled.Pressable`
   width: 100px;
   border-radius: 15px;
-  background-color: #FE2B54;
+  background-color: #fe2b54;
   height: 80%;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  
-` 
+`;
 const BtnText = styled.Text`
   color: #fff;
   font-size: 15px;
@@ -88,51 +87,50 @@ const BtnText = styled.Text`
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5
+    elevation: 5,
   },
   button: {
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
   },
   buttonOpen: {
-    backgroundColor: "#F194FF",
+    backgroundColor: '#F194FF',
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: '#2196F3',
   },
   textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center"
-  }
+    textAlign: 'center',
+  },
 });
 
 
 
 export default MeetMainPage = ({navigation}) => {
-
     return(
       <Container>
         <MainContainer>
@@ -156,27 +154,5 @@ export default MeetMainPage = ({navigation}) => {
         <Meetingcardcontainer/>
       </Container>
     );
-  // }
 }
-
-// export const Make = ({navigation}) => {
-//   return(
-//     <SearchLocation/>
-//   );
-// }
-
-// const Stack = createNativeStackNavigator();
-
-// const App = () => {
-//   return(
-//     <NavigationContainer>
-//       <Stack.Navigator screenOptions = {{ headerShown: false }}>
-//         <Stack.Screen name="Default" component={Default}/>
-//         <Stack.Screen name="Make" component={Make}/>
-//         <Stack.Screen name="WhenToMeet" component={WhenToMeet}/>
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
 
