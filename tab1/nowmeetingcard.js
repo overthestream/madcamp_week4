@@ -15,7 +15,7 @@ const MeetingWrapper = styled.View`
   width: 97%;
   height: 80px;
   border-radius: 10px;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   flex: 1;
   margin-left: 5px;
   margin-right: 5px;
@@ -36,7 +36,7 @@ const MeetingInfo = styled.TouchableOpacity`
   height: 100%;
   margin-left: 15px;
   flex-direction: column;
-  
+
   /* background-color: blueviolet; */
 `;
 
@@ -48,13 +48,13 @@ const MeetingIcons = styled.View`
   /* background-color: beige; */
 `;
 const TitleText = styled.Text`
-  font-weight: 700; 
+  font-weight: 700;
   font-size: 20px;
   line-height: 28px;
 `;
 
 const DayText = styled.Text`
-  font-weight: 500; 
+  font-weight: 500;
   font-size: 20px;
   line-height: 28px;
 `;
@@ -67,7 +67,6 @@ const TitleContainer = styled.View`
 
 const DayContainer = styled.View`
   flex: 3;
-
 `;
 const ImageContainer = styled.TouchableOpacity`
   width: 60%;
@@ -94,7 +93,9 @@ const MeetingCard = (item) => {
             <TitleText>{title}</TitleText>
           </TitleContainer>
           <DayContainer>
-            <DayText>{item.item.year}년 {item.item.month}월 {item.item.day}일</DayText>
+            <DayText>
+              {item.item.year}년 {item.item.month}월 {item.item.day}일
+            </DayText>
           </DayContainer>
         </MeetingInfo>
         <MeetingIcons>
@@ -111,8 +112,6 @@ const MeetingCard = (item) => {
       </MeetingInner>
     </MeetingWrapper>
   );
-}
+};
 
 export default MeetingCard;
-
- 

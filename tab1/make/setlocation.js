@@ -1,6 +1,15 @@
-import React,{useState, useEffect} from "react";
-import styled from "styled-components";
-import {View, Text, StyleSheet, StatusBar ,FlatList, TextInput, SafeAreaView, TouchableOpacity} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import {
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+  FlatList,
+  TextInput,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import axios from 'axios';
 import Location from './location';
 
@@ -27,11 +36,11 @@ const styles = StyleSheet.create({
   button: {
     width: '20px',
     height: '100%',
-    borderRadius: '5px'
+    borderRadius: '5px',
   },
-  commitBtnText : {
-    paddingRight: '10px'
-  }
+  commitBtnText: {
+    paddingRight: '10px',
+  },
 });
 
 const MainText = styled.Text`
@@ -66,21 +75,20 @@ const SearchText = styled.Text`
 `;
 
 const SearchLocation = () => {
+  const [searchValue, setSearchValue] = useState([]);
+  const [textInput, setTextInput] = useState('');
 
-  const [searchValue,setSearchValue] = useState([]);
-  const [textInput,setTextInput] = useState('');
-  
   const Kakao = axios.create({
     baseURL: 'https://dapi.kakao.com',
     headers: {
-      Authorization: 'KakaoAK 505f156e09ef2d3fa5fd8dd6fa3d2d2d'
-    }
+      Authorization: 'KakaoAK 505f156e09ef2d3fa5fd8dd6fa3d2d2d',
+    },
   });
   useEffect(()=> {
     const queryText = textInput.replace(/^\s+|\s+$/g, '').toString();
     const params = {
-      'query' : queryText,
-      'size' : 10
+      query: queryText,
+      size: 10,
     };
   
     Kakao.get('/v2/local/search/keyword',
@@ -93,25 +101,20 @@ const SearchLocation = () => {
     
   },[textInput])
 
-  return(
+  return (
     <View style={styles.mainView}>
       <MainText>우리 어디서 만날까?</MainText>
       <InputContainer>
         <TextContainer>
-          <TextInput
-          onChangeText={setTextInput}
-            style={styles.input}
-          />
-          <TouchableOpacity >
+          <TextInput onChangeText={setTextInput} style={styles.input} />
+          <TouchableOpacity onPress={search}>
             <SearchText>검색</SearchText>
           </TouchableOpacity>
         </TextContainer>
       </InputContainer>
-      <Location props={{searchValue}}/>
+      <Location props={{ searchValue }} />
     </View>
-    );
-} 
-
-
+  );
+};
 
 export default SearchLocation;

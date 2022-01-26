@@ -1,18 +1,26 @@
-import React,{useState} from "react";
-import styled from "styled-components";
-import { TextInput ,StyleSheet,SafeAreaView, TouchableOpacity,Platform ,Button,View, Text} from 'react-native';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import {
+  TextInput,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+  Platform,
+  Button,
+  View,
+  Text,
+} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation } from "@react-navigation/native";
 // import StyleSheet from 'react-native';
 
-
 const styles = StyleSheet.create({
-  button : {
+  button: {
     width: '100%',
     padding: 5,
     borderRadius: 5,
   },
-    input: {
+  input: {
     height: 40,
     margin: 12,
     borderRadius: 10,
@@ -46,7 +54,7 @@ const MainText = styled.Text`
 const SecondMainText = styled.Text`
   font-size: 16px;
   margin-left: 12px;
-  margin-top: 12px;  
+  margin-top: 12px;
 `;
 
 const WhereToMeet = styled.Text`
@@ -54,7 +62,7 @@ const WhereToMeet = styled.Text`
   color: #000;
   font-weight: 600;
   margin-left: 12px;
-  margin-top: 10px;  
+  margin-top: 10px;
   margin-bottom: 12px;
 `;
 
@@ -71,7 +79,7 @@ const PickText = styled.Text`
 
 const PickView = styled.View`
   flex-direction: row;
-  margin-left: 10px ;
+  margin-left: 10px;
 `;
 
 //약속 확정 짓기
@@ -101,10 +109,9 @@ const SubmitView = styled.View`
   flex: 1;
 `
 
-const WhenToMeet = ({route}) => {
-  
+const WhenToMeet = ({ route }) => {
   const data = route.params.props.item;
-  
+
   //전송할 데이터 목록
   const x = data.x;
   const y = data.y;
@@ -154,19 +161,19 @@ const WhenToMeet = ({route}) => {
   }
 
   //글 작성 목록
-  const [title,setTitle] = useState("약속 이름을 정해줘");
-  const [context,setContext] = useState("약속에 대한 설명을 적어줘");
+  const [title, setTitle] = useState('약속 이름을 정해줘');
+  const [context, setContext] = useState('약속에 대한 설명을 적어줘');
 
-  return(
+  return (
     // <Text>안녕하세요</Text>
-  <MainView>
-    <MainText>약속 굳히기</MainText>
-    <UpperContentWrapper>
-      <SecondMainText>우리 여기서 만나기로 했어!</SecondMainText>
-      <WhereToMeet>{placeName}</WhereToMeet>
-    </UpperContentWrapper>
-    <UpperContentWrapper>
-      <SecondMainText>근데 언제 만나?</SecondMainText>
+    <MainView>
+      <MainText>약속 굳히기</MainText>
+      <UpperContentWrapper>
+        <SecondMainText>우리 여기서 만나기로 했어!</SecondMainText>
+        <WhereToMeet>{placeName}</WhereToMeet>
+      </UpperContentWrapper>
+      <UpperContentWrapper>
+        <SecondMainText>근데 언제 만나?</SecondMainText>
         <PickView>
         <View>
           <TouchableOpacity style={styles.button} onPress={showDatepicker}>

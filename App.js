@@ -17,18 +17,17 @@ import MeetingDetail from './tab1/meetdetail/meetdetail';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  console.log("main")
+  console.log('main');
   return (
     <NavigationContainer>
-      <Tab.Navigator  screenOptions={{ headerShown: false }}>
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen name="근황 토크" component={GHT} />
         <Tab.Screen name="약속 잡기" component={MeetStackScreen} />
-        <Tab.Screen name="방명록" component={VisitTab}/>
+        <Tab.Screen name="방명록" component={VisitTab} />
       </Tab.Navigator>
     </NavigationContainer>
-);
-}  
-
+  );
+}
 
 const Stack = createNativeStackNavigator();
 

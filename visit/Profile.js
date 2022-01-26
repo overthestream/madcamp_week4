@@ -1,18 +1,12 @@
 import styled from 'styled-components/native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
+import fetch from 'cross-fetch';
+
+import UserStore from '../UserStore';
+import { observer } from 'mobx-react';
 import axios from 'axios';
-import fetch from 'cross-fetch'
-
-const userName = '제호';
-
-const HardCodedData = {
-  name: '제호',
-  imgUri: './test/scarecrowjeho.jpeg',
-  text: '인생은 소소하게',
-  location: '부산',
-};
 
 const Container = styled.View`
   flex-direction: row;
@@ -58,12 +52,21 @@ const ModifyContent = styled.TextInput`
 
 const ModifyImage = styled.TouchableOpacity``;
 
-const Profile = () => {
-  const [name, setName] = useState(HardCodedData.name);
-  const [text, setText] = useState(HardCodedData.text);
-  const [location, setLocation] = useState(HardCodedData.location);
+const Profile = observer((props) => {
+  const userStore = UserStore.Store;
+
+  const { name, userText, userLocation, image_url } = props.props;
+  const [text, setText] = useState(userText);
+  const [location, setLocation] = useState(userLocation);
+  const [imageUrl, setImageUrl] = useState(image_url);
   const [isSetting, setIsSetting] = useState(false);
   const [singleFile, setSingleFile] = useState(null);
+
+  useEffect(()=>{
+    setImageUrl(image_url);
+    setText(userText);
+    setLocation(userLocation);
+  },[image_url, userText, userLocation])
 
   const selectFile = async () => {
     try {
@@ -85,31 +88,32 @@ const Profile = () => {
   const uploadImage = async () => {
     if (singleFile != null) {
       const data = new FormData();
-//      data.append('boundary', 'boundary');
-      data.append('imgFile', singleFile);
-      fetch('http://192.249.18.173:80/user/upload', {
-        method: 'POST',
-        
-      })
-
-//      data.append('boundary', 'boundary');
-  /*    console.log(data);
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data; boundary=boundary"
-        },
-        data:data,
-        params: { type: 1, userName: userName }
+      data.append('imgFile', singleFile[0]);
+      const url = new URL('http://192.249.18.173:80/user/upload');
+      const query = {
+        type: 1,
+        userName: userStore.userName,
       };
+      Object.keys(query).forEach((key) =>
+        url.searchParams.append(key, query[key]),
+      );
 
-      const res = await axios.post(
-        'http://192.249.18.173:80/user/upload', data,
-        config
-      );  
-      console.log(res); 
-      */
+      fetch(encodeURI(url), {
+        method: 'POST',
+        headers: {
+          Accept: '*/*',
+          'Content-Type': 'multipart/form-data',
+        },
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          setImageUrl(json.loc);
+          userStore.updateUserImage(json.loc);
+        })
+        .catch((err) => console.error(err));
     }
-  };     
+  };
 
   return (
     <Container>
@@ -120,39 +124,81 @@ const Profile = () => {
             <ModifyImage
               onPress={() => {
                 selectFile();
-              }}>
-              <ProfileImage source={require('./test/scarecrowjeho.jpeg')} />
+              }}
+            >
+              <ProfileImage
+                source={{
+                  uri: imageUrl,
+                  method: 'GET',
+                }}
+              />
             </ModifyImage>
           </View>
         ) : (
           <View>
             <Title>{`${name}의 근황`}</Title>
-            <ProfileImage source={require('./test/scarecrowjeho.jpeg')} />
+            <ProfileImage
+              source={{
+                uri: imageUrl,
+                method: 'GET',
+              }}
+            />
           </View>
         )}
       </ImageContainer>
       <InfoContainer>
         <Title>{`${name}의 한마디 💬`}</Title>
         {isSetting ? (
-          <ModifyContent value={text} onChangeText={setText} />
+          <ModifyContent
+            value={text}
+            onChangeText={(e) => {
+              setText(e);
+              const url = new URL('http://192.249.18.173:80/user/text');
+              const query = {
+                newText: text,
+                userName: userStore.userName,
+              };
+              Object.keys(query).forEach((key) =>
+                url.searchParams.append(key, query[key]),
+              );
+              axios.put(encodeURI(url));
+              userStore.updateUserText(text);
+            }}
+          />
         ) : (
           <ProfileText>{text}</ProfileText>
         )}
         <Title>{`${name}의 위치 🗺`}</Title>
         {isSetting ? (
-          <ModifyContent value={location} onChangeText={setLocation} />
+          <ModifyContent
+            value={location}
+            onChangeText={(e) => {
+              setLocation(e);
+              const url = new URL('http://192.249.18.173:80/user/location');
+              const query = {
+                newLocation: location,
+                userName: userStore.userName,
+              };
+              Object.keys(query).forEach((key) =>
+                url.searchParams.append(key, query[key]),
+              );
+              axios.put(encodeURI(url));
+              userStore.updateUserLocation(location);
+            }}
+          />
         ) : (
           <ProfileText>{location}</ProfileText>
         )}
       </InfoContainer>
-      {name === userName ? (
+      {name === userStore.userName ? (
         <ProfileButton
           onPress={() => {
             if (isSetting) {
               uploadImage();
             }
             setIsSetting(!isSetting);
-          }}>
+          }}
+        >
           <ProfileSetting source={require('./asset/setting.png')} />
         </ProfileButton>
       ) : (
@@ -160,6 +206,6 @@ const Profile = () => {
       )}
     </Container>
   );
-};
+});
 
 export default Profile;

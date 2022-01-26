@@ -120,7 +120,7 @@ const MeetingDetail = (props) => {
         <MapContainer>
         <MapView 
           style={{ flex: 1 }} 
-          // provider={PROVIDER_GOOGLE} 
+          provider={PROVIDER_GOOGLE} 
           initialRegion={{ 
             latitude: x, 
             longitude: y, 
