@@ -14,9 +14,16 @@ const Container = styled.View`
 `;
 const ImageContainer = styled.View``;
 const Title = styled.Text`
-  background-color: blue;
-  font-weight: bold;
+  /* background-color: blue; */
+  /* font-weight: bold; */
+  font-size:  18px;
+  margin-left: 4px;
 `;
+
+const Name = styled.Text`
+  font-weight: 700;
+`;
+
 const ProfileImage = styled.Image`
   margin-top: 5px;
   width: 120px;
@@ -26,12 +33,15 @@ const ProfileImage = styled.Image`
 const ProfileText = styled.Text`
   padding-top: 4px;
   padding-bottom: 4px;
+  margin-left: 5px;
 `;
 const InfoContainer = styled.View`
   margin-top: 23px;
   margin-left: 8px;
+  /* align-items: center; */
+  justify-content: center;
   width: 190px;
-  background-color: green;
+  /* background-color: green; */
 `;
 
 const ProfileSetting = styled.Image`
@@ -43,10 +53,19 @@ const ProfileButton = styled.TouchableOpacity`
   width: 20px;
   height: 20px;
 `;
+const MiddleBorder = styled.View`
+  height: 0.4px;
+  width: 100%;
+
+  margin-top: 5px;
+  border: 0.2px solid #0c0c0c;
+  margin-bottom: 5px;
+`;
 
 const ModifyContent = styled.TextInput`
   color: black;
   margin: 0;
+  margin-left: 5px;
   padding: 0;
 `;
 
@@ -136,7 +155,12 @@ const Profile = observer((props) => {
           </View>
         ) : (
           <View>
-            <Title>{`${name}의 근황`}</Title>
+            <Title>
+              <Name>
+              {`${name} `}  
+              </Name>
+              의 근황
+            </Title>
             <ProfileImage
               source={{
                 uri: imageUrl,
@@ -147,7 +171,12 @@ const Profile = observer((props) => {
         )}
       </ImageContainer>
       <InfoContainer>
-        <Title>{`${name}의 한마디 💬`}</Title>
+        <Title>{`${name}의 `}
+          <Name>
+            한마디 
+          </Name>
+           💬
+        </Title>
         {isSetting ? (
           <ModifyContent
             value={text}
@@ -168,7 +197,10 @@ const Profile = observer((props) => {
         ) : (
           <ProfileText>{text}</ProfileText>
         )}
-        <Title>{`${name}의 위치 🗺`}</Title>
+        <MiddleBorder></MiddleBorder> 
+        <Title>{`${name}의`}
+          <Name> 위치 </Name>🗺
+        </Title>
         {isSetting ? (
           <ModifyContent
             value={location}

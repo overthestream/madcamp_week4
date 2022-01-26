@@ -4,26 +4,36 @@ import React, { useState } from 'react';
 import UserList from './UserList';
 import Profile from './Profile';
 import VisitList from './VisitList';
-
+import ScrollView from 'react-native';
 import UserStore from '../UserStore';
 import { observer } from 'mobx-react';
 
-const Container = styled.View``;
+const Container = styled.ScrollView``;
 
 const UserListContainer = styled.View`
   height: 75px;
-  background-color: black;
+  /* background-color: black; */
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  background-color: rgba(234, 234, 234, 1);
+  border: rgba(226, 225, 225, 1);
   border-radius: 14px;
-  margin: 4%;
+  /* margin: 4%; */
+  margin-top: 4%;
+  margin-right: 4%;
+  margin-left: 4%;
   vertical-align: middle;
   justify-content: center;
 `;
 
 const ProfileContainer = styled.View`
-  background-color: red;
+  /* background-color: red; */
+  background-color: rgba(234, 234, 234, 1);
+  border: rgba(226, 225, 225, 1);
   margin-left: 4%;
   margin-right: 4%;
   border-radius: 10px;
+  margin-bottom: 10px;
 `;
 
 const GHTContainer = styled.FlatList`

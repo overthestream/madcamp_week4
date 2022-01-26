@@ -92,11 +92,13 @@ const MeetingCard = (item) => {
           </DayContainer>
         </MeetingInfo>
         <MeetingIcons>
-          <ImageContainer onPress={Press}>
-            <Image
-              source={require('./tabimg/hand.jpg')}
-              style={{ width: '100%', height: '100%' }}
-            />
+          <ImageContainer
+            onPress = {Press}
+          >2
+          <Image
+            source={require('./tabimg/hand.jpg')}
+            style={{width:'100%', height:'100%'}}
+          />
           </ImageContainer>
         </MeetingIcons>
       </MeetingInner>

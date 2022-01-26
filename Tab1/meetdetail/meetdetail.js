@@ -115,37 +115,31 @@ const MeetingDetail = (props) => {
         <MainInfo>{infomation.name}</MainInfo>
 
         <MapContainer>
-          <MapView
-            style={{ flex: 1 }}
-            provider={PROVIDER_GOOGLE}
-            initialRegion={{
-              latitude: x,
-              longitude: y,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-          />
-          <MapView.Marker
-            coordinate={{ latitude: x, longitude: y }}
-            title={infomation.place_name}
-            description={infomation.name}
-          />
-        </MapContainer>
-        <InfoText>어디서?</InfoText>
-        <InfoMainText>{infomation.place_name}</InfoMainText>
-        <AddressText>{infomation.address}</AddressText>
-        <InfoText>언제?</InfoText>
-        <InfoMainText>
-          {infomation.year}년 {infomation.month}월 {infomation.day}일
-        </InfoMainText>
-        <BottomView />
-        <GoBtnContainer>
-          <GoBtn onPress={BtnClick}>
-            <TextWrapper>
-              <GoText>나도 가고싶어!</GoText>
-            </TextWrapper>
-          </GoBtn>
-        </GoBtnContainer>
+        <MapView 
+          style={{ flex: 1 }} 
+          provider={PROVIDER_GOOGLE} 
+          initialRegion={{ 
+            latitude: x, 
+            longitude: y, 
+            latitudeDelta: 0.0922, 
+            longitudeDelta: 0.0421, }} 
+            />
+      </MapContainer>
+      <InfoText>어디서?</InfoText>
+      <InfoMainText>{infomation.place_name}</InfoMainText>
+      <AddressText>{infomation.address}</AddressText>
+      <InfoText>언제?</InfoText>
+      <InfoMainText>{infomation.year}년 {infomation.month}월 {infomation.day}일</InfoMainText>
+      <BottomView/>
+      <GoBtnContainer>
+        <GoBtn onPress={BtnClick}>
+          <TextWrapper>
+            <GoText>
+              나도 가고싶어!
+            </GoText>
+          </TextWrapper>
+        </GoBtn>
+      </GoBtnContainer>
       </InfoView>
     </MainView>
   );

@@ -4,18 +4,25 @@ import VisitItem from './VisitItem';
 import VisitWriter from './VisitWriter';
 
 const Container = styled.View`
-  background-color: blue;
-  height: 200px;
+  background-color: rgba(234, 234, 234, 1);
+  border: rgba(226, 225, 225, 1);
+  height: 400px;
   padding: 10px;
   margin: 4%;
   border-radius: 10px;
 `;
 const Title = styled.Text`
-  font-weight: bold;
+  /* font-weight: bold; */
+  /* text-shadow: 0cm; */
+  letter-spacing: 0.02px;
 `;
+const TitleUserName = styled.Text`
+  font-weight: 700;
+`;
+
 const VisitListContainer = styled.FlatList`
   margin-top: 7px;
-  background-color: black;
+  /* background-color: black; */
 `;
 
 const VisitList = (props) => {
@@ -39,7 +46,12 @@ const VisitList = (props) => {
 
   return (
     <Container>
-      <Title>{userName}에게 한마디</Title>
+      <Title>
+        <TitleUserName>
+          {userName}
+        </TitleUserName>
+        에게 한마디
+      </Title>
       <VisitListContainer
         data={visitList}
         renderItem={(item, index) => {
