@@ -12,7 +12,6 @@ import {
   Image,
 } from 'react-native';
 import Talk from '../tab1/Talk';
-import EventDay from '../tab1/EventDay';
 import { SwipeListView } from 'react-native-swipe-list-view';
 
 function GHT() {
