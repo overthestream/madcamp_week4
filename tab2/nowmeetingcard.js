@@ -20,7 +20,7 @@ const MeetingInner = styled.View`
   flex: 1;
   flex-direction: row;
   /* justify-content: space-between; */
-  /* flex-direction: column; */
+  /* flex-direction: column; */ 
 `;
 
 const MeetingInfo = styled.TouchableOpacity`

@@ -147,9 +147,14 @@ const WhenToMeet = ({ route }) => {
     const sendObj = new Object();
     sendObj['placeName'] = placeName;
     sendObj['address'] = address;
+    sendObj['name'] = title;
+    sendObj['description'] = context;
     sendObj['x'] = x;
     sendObj['y'] = y;
-    sendObj['date'] = date;
+    sendObj['year'] = date.getFullYear();
+    sendObj['month'] = date.getMonth() + 1;
+    sendObj['day'] = date.getDate();
+
     const params = {
       data: sendObj,
     };
@@ -160,8 +165,8 @@ const WhenToMeet = ({ route }) => {
   };
 
   //글 작성 목록
-  const [title, setTitle] = useState('약속 이름을 정해줘');
-  const [context, setContext] = useState('약속에 대한 설명을 적어줘');
+  const [title, setTitle] = useState('');
+  const [context, setContext] = useState('');
 
   return (
     // <Text>안녕하세요</Text>
@@ -202,6 +207,7 @@ const WhenToMeet = ({ route }) => {
         <SecondMainText>약속의 제목을 정해줘!</SecondMainText>
         <SafeAreaView>
           <TextInput
+            placeholder='약속의 제목을 적어줘!'
             style={styles.input}
             onChangeText={setTitle}
             value={title}
@@ -213,6 +219,7 @@ const WhenToMeet = ({ route }) => {
         <SecondMainText>약속에 대한 설명을 적어줘!</SecondMainText>
         <SafeAreaView>
           <TextInput
+          placeholder='약속의 설명을 적어줘!'
             style={styles.input}
             onChangeText={setContext}
             multiline
