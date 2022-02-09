@@ -78,9 +78,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginTop: 10,
     marginBottom: 10,
-    // shadowColor: "#E8E8E8",
-    // shadowOpacity: 0.3,
-    // shadowOffset: {width: 2, height: 2}
     elevation: 3,
   },
   Info: {

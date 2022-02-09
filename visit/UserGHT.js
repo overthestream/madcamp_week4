@@ -11,8 +11,7 @@ import {
   Keyboard,
   Image,
 } from 'react-native';
-import Talk from './Talk';
-import EventDay from './EventDay';
+import Talk from '../tab1/Talk';
 import { SwipeListView } from 'react-native-swipe-list-view';
 
 function GHT() {
@@ -20,29 +19,40 @@ function GHT() {
 
   const [refresh, setRefresh] = useState(false);
   useEffect(() => {
-    fetch('http://192.249.18.173:80/GHT/list')
-      .then((res) => res.json())
+    const url = new URL('http://192.249.18.173:80/GHT/written');
+    const query = {
+      userName: '이제호',
+    };
+    Object.keys(query).forEach((key) =>
+      url.searchParams.append(key, query[key]),
+    );
+    fetch(encodeURI(url), {
+      method: 'GET',
+    })  .then((res) => res.json())
       .then((json) => setGHTList(json))
       .catch((err) => console.log(err));
   }, [refresh]);
-  const LIST_COMMENT = [
-    {
-      id: 1,
-      comment: '밤산은 인정이지',
-    },
-    {
-      id: 2,
-      comment: 'TPS 가야지',
-    },
-    {
-      id: 3,
-      comment: '아 진짜 너무 졸리다',
-    },
-    {
-      id: 4,
-      comment: '하나 둘 셋 화이팅~!',
-    },
-  ];
+
+  const [commentList, setCommentList] = useState([null]);
+  useEffect(() => {
+    GHTList.map((item) => {
+      const url = new URL('http://192.249.18.173:80/GHT/reply/list');
+      const query = {
+        GHT_id: item.id,
+      };
+      Object.keys(query).forEach((key) =>
+        url.searchParams.append(key, query[key]),
+      );
+      fetch(encodeURI(url), {
+        method: 'GET',
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          setCommentList(commentList.concat(json));
+        })
+        .catch((err) => console.error(err));
+    });
+  }, [GHTList]);
 
   const [memo, setMemo] = useState(
     '다같이 인생네컷 찍었다아아아아아아아아아아아아아',
@@ -56,7 +66,6 @@ function GHT() {
       {/* <View> */}
       {/* style={{flexDirection: 'row', width: '100%', 
                 borderColor: 'black', borderWidth: 1}}> */}
-      <EventDay refresh={refresh} setRefresh={setRefresh} />
       {/* </View> */}
 
       <SwipeListView
@@ -71,7 +80,7 @@ function GHT() {
             />
           </View>
         )}
-        renderHiddenItem={(data, rowMap) => (
+        renderHiddenItem={(data, rowMap) => {
           <View style={styles.swipeHiddenItemContainer}>
             <View style={styles.swipeHiddenLeftItem}>
               <Text style={styles.swipeHiddenLeftItemText}>{memo}</Text>
@@ -82,16 +91,20 @@ function GHT() {
               </Text>
               <View style={styles.swipeHiddenCommentItem}>
                 <ScrollView>
-                  {LIST_COMMENT.map((e) => {
-                    var a = (
-                      <Text
-                        key={e.id}
-                        style={styles.swipeHiddenCommentItemText}
-                      >
-                        {e.comment}
-                      </Text>
-                    );
-                    return a;
+                  {commentList.map((e, index) => {
+                    if (typeof e === Array || !e || !e.length) return;
+                    if (data.item.id === e[0].GHT_id) {
+                      e.map((item, index) => {
+                        return (
+                          <Text
+                            key={index}
+                            style={styles.swipeHiddenCommentItemText}
+                          >
+                            {item.text}
+                          </Text>
+                        );
+                      });
+                    } else return;
                   })}
                 </ScrollView>
               </View>
@@ -118,8 +131,8 @@ function GHT() {
                 </TouchableOpacity>
               </View>
             </View>
-          </View>
-        )}
+          </View>;
+        }}
         leftOpenValue={140}
         rightOpenValue={-230}
       />

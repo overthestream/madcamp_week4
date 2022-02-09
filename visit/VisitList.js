@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import React, { useEffect, useState } from 'react';
 import VisitItem from './VisitItem';
 import VisitWriter from './VisitWriter';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Container = styled.View`
   background-color: rgba(234, 234, 234, 1);
@@ -67,6 +68,7 @@ const VisitList = (props) => {
           );
         }}
       />
+      
       <VisitWriter
         setVisitList={setVisitList}
         visitList={visitList}
