@@ -19,7 +19,7 @@ function GHT() {
 
   const [refresh, setRefresh] = useState(false);
   useEffect(() => {
-    const url = new URL('http://192.249.18.173:80/GHT/written');
+    const url = new URL('http://49.50.160.143:80/GHT/written');
     const query = {
       userName: '이제호',
     };

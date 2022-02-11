@@ -72,7 +72,7 @@ const GHTModal = (props) => {
                 const data = new FormData();
                 const userStore = UserStore.Store;
                 data.append('imgFile', singleFile[0]);
-                const url = new URL('http://192.249.18.173:80/GHT/write');
+                const url = new URL('http://49.50.160.143:80/GHT/write');
                 const query = {
 
                   writen_when: new Date().toLocaleString(),

@@ -48,61 +48,13 @@ const OuterContainer = styled.View`
   height: 100%;
 `;
 
-const MeetData = [
-  {
-    id: 1,
-    name: '제호 생일 파티',
-    year: '2022',
-    month: '01',
-    day: '10',
-    x: 37.5283169,
-    y: 126.9294254,
-    place_name: '서울역',
-    address:
-      '광주광역시 북구 오룡동 첨단과기로 123 광주과학기술원 학사기숙사 a동',
-  },
-  {
-    id: 2,
-    name: '제호 생일 파티',
-    year: '2022',
-    month: '01',
-    day: '10',
-    x: 37.5283169,
-    y: 126.9294254,
-    place_name: '서울역',
-    address:
-      '광주광역시 북구 오룡동 첨단과기로 123 광주과학기술원 학사기숙사 a동',
-  },
-  {
-    id: 3,
-    name: '제호 생일 파티',
-    year: '2022',
-    month: '01',
-    day: '10',
-    x: 37.5283169,
-    y: 126.9294254,
-    place_name: '서울역',
-    address:
-      '광주광역시 북구 오룡동 첨단과기로 123 광주과학기술원 학사기숙사 a동',
-  },
-  {
-    id: 4,
-    name: '제호 생일 파티',
-    year: '2022',
-    month: '01',
-    day: '10',
-    x: 37.5283169,
-    y: 126.9294254,
-    place_name: '서울역',
-    address:
-      '광주광역시 북구 오룡동 첨단과기로 123 광주과학기술원 학사기숙사 a동',
-  },
+const MeetData = [  
   {
     id: 5,
     name: '제호 생일 파티',
     year: '2022',
-    month: '01',
-    day: '10',
+    month: '05',
+    day: '19',
     x: 37.5283169,
     y: 126.9294254,
     place_name: '서울역',
@@ -113,8 +65,8 @@ const MeetData = [
     id: 6,
     name: '제호 생일 파티',
     year: '2022',
-    month: '01',
-    day: '10',
+    month: '03',
+    day: '13',
     x: 37.5283169,
     y: 126.9294254,
     place_name: '서울역',
@@ -125,8 +77,8 @@ const MeetData = [
     id: 7,
     name: '제호 생일 파티',
     year: '2022',
-    month: '01',
-    day: '10',
+    month: '05',
+    day: '12',
     x: 37.5283169,
     y: 126.9294254,
     place_name: '서울역',
@@ -137,8 +89,8 @@ const MeetData = [
     id: 8,
     name: '제호 생일 파티',
     year: '2022',
-    month: '01',
-    day: '10',
+    month: '03',
+    day: '17',
     x: 37.5283169,
     y: 126.9294254,
     place_name: '서울역',
@@ -147,25 +99,28 @@ const MeetData = [
   },
 ];
 
-export default class SwiperComponent extends React.Component {
+const SwiperComponent = () => {
 
+  // const MeetingData = JSON.parse(MeetData);
 
-  render() {
-    return (
-      <OuterContainer>
-        <Swiper style={styles.wrapper}>
-          <Container>
-            <Content />
-          </Container>
-          <Container>
-            <Content />
-          </Container>
-          <Container>
-            <Content />
-          </Container>
-        </Swiper>
-      </OuterContainer>
-    );
-  }
+  // for(let i = 0 ; i < MeetData.length ; i++ ){
+
+  // }
+  return (
+    <OuterContainer>
+      <Swiper style={styles.wrapper}>
+        <Container>
+          <Content props/>
+        </Container>
+        <Container>
+          <Content />
+        </Container>
+        <Container>
+          <Content />
+        </Container>
+      </Swiper>
+    </OuterContainer>
+  );
 }
-// AppRegistry.registerComponent('WEEK4', () => SwiperComponent)
+
+export default SwiperComponent;

@@ -53,7 +53,7 @@ const VisitWriter = ({ name, setVisitList, visitList }) => {
               send_when: new Date().toDateString(),
             };
             setVisitList(visitList.concat(newMsg));
-            const url = new URL('http://192.249.18.173:80/visit/add');
+            const url = new URL('http://49.50.160.143:80/visit/add');
 
             Object.keys(newMsg).forEach((key) =>
               url.searchParams.append(key, newMsg[key]),

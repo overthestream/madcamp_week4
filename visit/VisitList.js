@@ -31,7 +31,7 @@ const VisitList = (props) => {
 
   const [visitList, setVisitList] = useState([]);
   useEffect(() => {
-    const url = new URL('http://192.249.18.173:80/visit/list');
+    const url = new URL('http://49.50.160.143:80/visit/list');
     const query = {
       name: userName,
     };

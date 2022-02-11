@@ -20,7 +20,7 @@ function GHT() {
 
   const [refresh, setRefresh] = useState(false);
   useEffect(() => {
-    fetch('http://192.249.18.173:80/GHT/list')
+    fetch('http://49.50.160.143:80/GHT/list')
       .then((res) => res.json())
       .then((json) => setGHTList(json))
       .catch((err) => console.log(err));

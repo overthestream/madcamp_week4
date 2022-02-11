@@ -108,7 +108,7 @@ const Profile = observer((props) => {
     if (singleFile != null) {
       const data = new FormData();
       data.append('imgFile', singleFile[0]);
-      const url = new URL('http://192.249.18.173:80/user/upload');
+      const url = new URL('http://49.50.160.143:80/user/upload');
       const query = {
         type: 1,
         userName: userStore.userName,

@@ -19,7 +19,7 @@ function Talk({ initName, initTitle, GHT_image }) {
   const [writer_image, setWriter_image] = useState(null);
 
   useEffect(() => {
-    const url = new URL('http://192.249.18.173:80/user/image');
+    const url = new URL('http://49.50.160.143:80/user/image');
     const query = {
       userName: initName,
     };
